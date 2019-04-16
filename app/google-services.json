@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "701746104104",
+    "firebase_url": "https://bb-ink-connect.firebaseio.com",
+    "project_id": "bb-ink-connect",
+    "storage_bucket": "bb-ink-connect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:701746104104:android:fa177365863a845c",
+        "android_client_info": {
+          "package_name": "com.example.uiaplycation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "701746104104-t1gfmmep194r8d9k3ccsjlvmsm2b5uk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.uiaplycation",
+            "certificate_hash": "2abcca4ef45872ec95af2ce6dd6bc8cf7f720ae6"
+          }
+        },
+        {
+          "client_id": "701746104104-91g6ib8th3v23eknsuca5eqoehqneobh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC5SGGweD8m8MJBhAndCPepWzqenc25wa8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "701746104104-91g6ib8th3v23eknsuca5eqoehqneobh.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

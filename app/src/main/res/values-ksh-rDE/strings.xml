@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BB Ink Connect</string>
+    <string name="chat_notification">Chat</string>
+    <string name="home">Home</string>
+    <string name="profile">Profil</string>
+    <string name="hello_blank_fragment">Hallo leeres Fragment</string>
+    <string name="profile_fragment">Profil</string>
+    <string name="home_fragment">Home</string>
+    <string name="app_info_fragment">Info</string>
+    <string name="upload_tattoo_fragment">Tattoo hochladen</string>
+    <string name="edit_profile_fragment">Profil bearbeiten</string>
+    <string name="sign_out_info_fragment">Abmelden</string>
+    <string name="options">Einstellung</string>
+    <string name="trends_on_bb_ink_connect">Trends auf BB ink Connect</string>
+    <string name="liked_by_176">Gefällt 176</string>
+    <string name="dennis_joch_neuer_post">Dennis Joch Neuer Post</string>
+    <string name="view_all_3_comments">Alle 3 Kommentare ansehen</string>
+    <string name="_3_days_ago">Vor 3 Tagen</string>
+    <string name="edit_your_profile">Edit your profile</string>
+    <string name="followers">Abonnenten</string>
+    <string name="following">Abonniert</string>
+    <string name="email">Email</string>
+    <string name="password">Passwort</string>
+    <string name="login">Anmelden</string>
+    <string name="no_account_yet_create_one">Kein Account? Registriere dich...</string>
+    <string name="login_with_google">Anmelden mit Google</string>
+    <string name="please_wait">Bitte warten...</string>
+    <string name="agb">AGB</string>
+    <string name="and">und</string>
+    <string name="dsgvo">DSGVO</string>
+    <string name="login_with_facebook">Anmelden mit Facebook</string>
+    <string name="chat">Posteingang</string>
+    <string name="notification">Benachrichtigung</string>
+    <string name="read">Gelesen</string>
+    <string name="reply">Antworten</string>
+    <string name="_5_minutes_ago">vor 5 min</string>
+    <string name="share_link">Link teilen</string>
+    <string name="copy_link">Link kopieren</string>
+    <string name="report">Melden</string>
+    <string name="share">Teilen</string>
+    <string name="write_a_description">Beschreibung hinzufügen...</string>
+    <string name="register_a_new_account">Erstelle einen neuen Account</string>
+    <string name="full_name">Ganzer Name</string>
+    <string name="register">Registrieren</string>
+    <string name="confirm_password">Passwort bestätigen</string>
+    <string name="cancel">Abbrechen</string>
+    <string name="confirm">Bestätigen</string>
+    <string name="edit_profile">Profil bearbeiten</string>
+    <string name="profile_photo">Profilfoto</string>
+    <string name="username">Nutzername</string>
+    <string name="display_name">Anzeigename</string>
+    <string name="website">Website</string>
+    <string name="description">Beschreibung</string>
+    <string name="private_information">Private Informationen</string>
+    <string name="change">Ändern</string>
+    <string name="phone_number">Telefonnummer</string>
+    <string name="phone">Telefonnummer</string>
+    <string name="next">Weiter</string>
+    <string name="gallery">Gallerie</string>
+    <string name="sign_out">Abmelden</string>
+    <string name="are_you_sure_you_want_to_sign_out">Möchten Sie sich wirklich abmelden?</string>
+    <string name="comments">Kommentare</string>
+    <string name="add_a_comment">Einen Kommentar hinzufügen...</string>
+    <string name="photo">Foto</string>
+    <string name="processing">Wird bearbeitet...</string>
+
+    //Toast
+    <string name="text_null">Sie müssen alle Felder ausfüllen</string>
+    <string name="login_failed">Anmeldung Fehlgeschlagen</string>
+    <string name="registration_failed">Registration fehlgeschlagen</string>
+    <string name="signup_successful">Registrierung erfolgreich. Bestätigungs-E-Mail wird gesendet.</string>
+    <string name="couldnt_send_verification_email">Es konnte keine Bestätigungs-E-Mail gesendet werden.</string>
+
+    //post card
+    <string name="view_all_comments_part_i">"Alle "</string>
+    <string name="view_all_comments_part_ii">" Kommentare ansehen"</string>
+
+</resources>

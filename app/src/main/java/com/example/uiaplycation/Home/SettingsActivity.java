@@ -1,0 +1,97 @@
+package com.example.uiaplycation.Home;
+
+import android.content.Context;
+import android.support.annotation.Nullable;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
+
+import com.example.uiaplycation.R;
+import com.example.uiaplycation.Settings.AppInfoFragment;
+import com.example.uiaplycation.Settings.EditProfileFragment;
+import com.example.uiaplycation.Settings.FAQFragment;
+import com.example.uiaplycation.Settings.SignOutFragment;
+import com.example.uiaplycation.Settings.UploadTattooFragment;
+import com.example.uiaplycation.Utils.SectionsStatePagerAdapter;
+
+import java.util.ArrayList;
+
+public class SettingsActivity extends AppCompatActivity {
+
+
+    private Context mContext;
+
+    private ViewPager mViewPager;
+    public SectionsStatePagerAdapter pagerAdapter;
+    private RelativeLayout mRelativeLayout;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_settings);
+        mContext = SettingsActivity.this;
+
+        mViewPager = findViewById(R.id.viewpager_container);
+        mRelativeLayout = findViewById(R.id.relLayout1);
+
+
+        setupSettingsList();
+        setupFragments();
+
+        ImageView backArrow = findViewById(R.id.backArrow);
+        backArrow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+    }
+
+    private void setupFragments(){
+        pagerAdapter = new SectionsStatePagerAdapter(getSupportFragmentManager());
+        pagerAdapter.addFragment(new AppInfoFragment(), getString(R.string.app_info_fragment)); //fragment 0
+        pagerAdapter.addFragment(new UploadTattooFragment(), getString(R.string.upload_tattoo_fragment));//fragment 1
+        pagerAdapter.addFragment(new EditProfileFragment(), getString(R.string.edit_profile_fragment));//fragment 2
+        pagerAdapter.addFragment(new FAQFragment(), getString(R.string.faq_fragment));//fragment 3
+        pagerAdapter.addFragment(new SignOutFragment(), getString(R.string.sign_out_info_fragment));//fragment 4
+
+    }
+
+    public void setViewPager(int fragmentNumber){
+        mRelativeLayout.setVisibility(View.GONE);
+        mViewPager.setAdapter(pagerAdapter);
+        mViewPager.setCurrentItem(fragmentNumber);
+    }
+
+    private void setupSettingsList(){
+        ListView listView = findViewById(R.id.lvAccountSettings);
+
+        ArrayList<String> options = new ArrayList<>();
+        options.add(getString(R.string.app_info_fragment)); //fragment 0
+        options.add(getString(R.string.upload_tattoo_fragment)); //fragment 1
+        options.add(getString(R.string.edit_profile_fragment)); //fragment 2
+        options.add(getString(R.string.faq_fragment)); //fragment 3
+        options.add(getString(R.string.sign_out_info_fragment)); //fragment 4
+
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, options);
+
+
+        listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                setViewPager(position);
+            }
+        });
+
+    }
+}
