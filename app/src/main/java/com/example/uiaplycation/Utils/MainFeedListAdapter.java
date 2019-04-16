@@ -129,8 +129,9 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
         holder.caption.setText(Objects.requireNonNull(getItem(position)).getCaption());
 
         //set the comment
-        List<Comment> comments = Objects.requireNonNull(getItem(position)).getComments();
-        holder.comments.setText(R.string.view_all_comments_part_i + comments.size() + R.string.view_all_comments_part_ii);
+        List<Comment> comments = getItem(position).getComments();
+        holder.comments.setText("View all " + comments.size() + " comments");
+        // holder.comments.setText(R.string.view_all_comments_part_i + comments.size() + R.string.view_all_comments_part_ii);
         holder.comments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,7 +170,7 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
 
         //set the profile image
         final ImageLoader imageLoader = ImageLoader.getInstance();
-        imageLoader.displayImage(Objects.requireNonNull(getItem(position)).getImage_path(), holder.image);
+        imageLoader.displayImage(getItem(position).getImage_path(), holder.image);
 
 
         //get the profile image and username

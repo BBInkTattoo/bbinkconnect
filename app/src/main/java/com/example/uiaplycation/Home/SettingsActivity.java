@@ -1,10 +1,13 @@
 package com.example.uiaplycation.Home;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +21,7 @@ import com.example.uiaplycation.Settings.EditProfileFragment;
 import com.example.uiaplycation.Settings.FAQFragment;
 import com.example.uiaplycation.Settings.SignOutFragment;
 import com.example.uiaplycation.Settings.UploadTattooFragment;
+import com.example.uiaplycation.Utils.FirebaseMethods;
 import com.example.uiaplycation.Utils.SectionsStatePagerAdapter;
 
 import java.util.ArrayList;
@@ -43,6 +47,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         setupSettingsList();
         setupFragments();
+        getIncomingIntent();
 
         ImageView backArrow = findViewById(R.id.backArrow);
         backArrow.setOnClickListener(new View.OnClickListener() {
@@ -93,5 +98,38 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void getIncomingIntent(){
+        Intent intent = getIntent();
+
+        if(intent.hasExtra(getString(R.string.selected_image))
+                || intent.hasExtra(getString(R.string.selected_bitmap))){
+
+            //if there is an imageUrl attached as an extra, then it was chosen from the gallery/photo fragment
+
+            if(intent.getStringExtra(getString(R.string.return_to_fragment)).equals(getString(R.string.edit_profile_fragment))){
+
+                if(intent.hasExtra(getString(R.string.selected_image))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(SettingsActivity.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                            intent.getStringExtra(getString(R.string.selected_image)), null);
+                }
+                else if(intent.hasExtra(getString(R.string.selected_bitmap))){
+                    //set the new profile picture
+                    FirebaseMethods firebaseMethods = new FirebaseMethods(SettingsActivity.this);
+                    firebaseMethods.uploadNewPhoto(getString(R.string.profile_photo), null, 0,
+                            null,(Bitmap) intent.getParcelableExtra(getString(R.string.selected_bitmap)));
+                }
+
+            }
+
+        }
+
+        if(intent.hasExtra(getString(R.string.calling_activity))){
+
+            setViewPager(pagerAdapter.getFragmentNumber(getString(R.string.edit_profile_fragment)));
+        }
     }
 }

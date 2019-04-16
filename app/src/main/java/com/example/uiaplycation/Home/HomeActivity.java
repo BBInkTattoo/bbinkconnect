@@ -52,6 +52,8 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
 
         setupBottomNavigationView();
 
+        initImageLoader();
+
         HomeFragment fragment = new HomeFragment();
         FragmentTransaction transaction = HomeActivity.this.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.container, fragment);

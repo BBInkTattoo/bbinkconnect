@@ -101,6 +101,7 @@
     <string name="field_description" translatable="false">description</string>
     <string name="field_phone_number" translatable="false">phone_number</string>
     <string name="field_email" translatable="false">email</string>
+    <string name="dbname_followers" translatable="false">followers</string>
 
     <!-- post card -->
     <string name="view_all_comments_part_i">View all </string>
@@ -119,6 +120,9 @@
     <!-- Intent Extras -->
     <string name="calling_activity" translatable="false">calling_activity</string>
     <string name="intent_user" translatable="false">intent_user</string>
+    <string name="selected_image" translatable="false">selected_image</string>
+    <string name="selected_bitmap" translatable="false">selected_bitmap</string>
+    <string name="return_to_fragment" translatable="false">return_to_fragment</string>
 
     <!-- fragment -->
     <string name="view_comments_fragment" translatable="false">View Comments</string>
