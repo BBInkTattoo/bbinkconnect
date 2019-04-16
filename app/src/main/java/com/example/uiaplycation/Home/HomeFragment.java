@@ -194,7 +194,6 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
                         newPhoto.setDate_created(objectMap.get(getString(R.string.field_date_created)).toString());
                         newPhoto.setImage_path(objectMap.get(getString(R.string.field_image_path)).toString());
 
-
                         List<Comment> commentsList = new ArrayList<Comment>();
                         for (DataSnapshot dSnapshot : singleSnapshot
                                 .child(getString(R.string.field_comments)).getChildren()){
