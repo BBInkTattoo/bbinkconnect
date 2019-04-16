@@ -3,10 +3,6 @@ package com.example.uiaplycation.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by User on 6/26/2017.
- */
-
 public class User implements Parcelable{
 
     private String user_id;
@@ -24,7 +20,6 @@ public class User implements Parcelable{
     public User() {
 
     }
-
 
     protected User(Parcel in) {
         user_id = in.readString();
@@ -76,7 +71,6 @@ public class User implements Parcelable{
     public void setUsername(String username) {
         this.username = username;
     }
-
 
     @Override
     public String toString() {

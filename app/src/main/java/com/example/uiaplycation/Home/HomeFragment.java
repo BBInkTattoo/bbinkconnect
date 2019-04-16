@@ -28,9 +28,11 @@ import com.eschao.android.widget.elasticlistview.OnUpdateListener;
 import com.example.uiaplycation.Login.LoginActivity;
 import com.example.uiaplycation.R;
 import com.example.uiaplycation.Utils.MainFeedListAdapter;
+import com.example.uiaplycation.Utils.UniversalImageLoader;
 import com.example.uiaplycation.models.Comment;
 import com.example.uiaplycation.models.Photo;
 import com.example.uiaplycation.models.UserAccountSettings;
+import com.example.uiaplycation.models.UserSettings;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -49,6 +51,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadListener {
@@ -73,16 +77,12 @@ public class HomeFragment extends Fragment implements OnUpdateListener, OnLoadLi
     private ArrayList<Photo> mPaginatedPhotos;
     private ArrayList<String> mFollowing;
     private int recursionIterator = 0;
-    //    private ListView mListView;
     private ElasticListView mListView;
     private MainFeedListAdapter adapter;
     private int resultsCount = 0;
     private ArrayList<UserAccountSettings> mUserAccountSettings;
-    //    private ArrayList<UserStories> mAllUserStories = new ArrayList<>();
     private JSONArray mMasterStoriesArray;
-
     private RecyclerView mRecyclerView;
-
 
     @Nullable
     @Override

@@ -79,6 +79,7 @@
     <string name="registration_failed">Registration failed</string>
     <string name="signup_successful">Signup successful. Sending verification email.</string>
     <string name="couldnt_send_verification_email">Couldn\'t send verification email.</string>
+    <string name="you_cant_post_a_blank_comment">You can\'t post a blank comment</string>
 
     <!-- firebase -->
     <string name="field_username" translatable="false">username</string>

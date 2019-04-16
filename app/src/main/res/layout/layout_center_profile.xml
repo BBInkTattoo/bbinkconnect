@@ -55,7 +55,6 @@
                         android:layout_alignParentEnd="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="14dp"
-                        android:src="@drawable/dennisjoch"
                         app:civ_border_color="@color/selector_item_color"
                         app:civ_border_width="0.5dp" />
 

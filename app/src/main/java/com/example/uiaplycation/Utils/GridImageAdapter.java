@@ -18,11 +18,6 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 import java.util.ArrayList;
 
 
-
-/**
- * Created by User on 6/4/2017.
- */
-
 public class GridImageAdapter extends ArrayAdapter<String>{
 
     private Context mContext;
@@ -49,9 +44,6 @@ public class GridImageAdapter extends ArrayAdapter<String>{
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 
-        /*
-        Viewholder build pattern (Similar to recyclerview)
-         */
         final ViewHolder holder;
         if(convertView == null){
             convertView = mInflater.inflate(layoutResource, parent, false);

@@ -26,14 +26,8 @@ public class ViewProfileFragment extends Fragment {
     private Context mContext;
     private TextView editProfile;
 
-
     private int mFollowersCount = 0;
     private int mFollowingCount = 0;
-
-
-
-
-
 
     @Nullable
     @Override

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -51,7 +52,7 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
         mRelativeLayout = findViewById(R.id.relLayoutParent);
 
         setupBottomNavigationView();
-
+        setupFirebaseAuth();
         initImageLoader();
 
         HomeFragment fragment = new HomeFragment();
@@ -63,14 +64,11 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
 
     }
 
-
-
     public void hideLayout(){
 
         mRelativeLayout.setVisibility(View.GONE);
         mFrameLayout.setVisibility(View.VISIBLE);
     }
-
 
     public void showLayout(){
 
@@ -80,8 +78,8 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
 
     @Override
     public void onBackPressed() {
-
         super.onBackPressed();
+
         if(mFrameLayout.getVisibility() == View.VISIBLE){
             showLayout();
         }
@@ -107,9 +105,6 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
         ImageLoader.getInstance().init(universalImageLoader.getConfig());
     }
 
-    /**
-     * BottomNavigationView setup
-     */
     private void setupBottomNavigationView() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
@@ -119,9 +114,29 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
         menuItem.setChecked(true);
     }
 
-    /*
-    ------------------------------------ Firebase ---------------------------------------------
-     */
+    private void setupFirebaseAuth(){
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                //check if the user is logged in
+                checkCurrentUser(user);
+
+                if (user != null) {
+                    // User is signed in
+
+                } else {
+                    // User is signed out
+
+                }
+
+            }
+        };
+    }
 
 
     private void checkCurrentUser(FirebaseUser user){
@@ -135,16 +150,16 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
     @Override
     public void onStart() {
         super.onStart();
-        // mAuth.addAuthStateListener(mAuthListener);
-        // checkCurrentUser(mAuth.getCurrentUser());
+         mAuth.addAuthStateListener(mAuthListener);
+         checkCurrentUser(mAuth.getCurrentUser());
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        // if (mAuthListener != null) {
-        //    mAuth.removeAuthStateListener(mAuthListener);
-        //  }
+         if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+         }
     }
 
     @Override

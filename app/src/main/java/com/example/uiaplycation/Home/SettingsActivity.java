@@ -44,7 +44,6 @@ public class SettingsActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.viewpager_container);
         mRelativeLayout = findViewById(R.id.relLayout1);
 
-
         setupSettingsList();
         setupFragments();
         getIncomingIntent();
@@ -85,9 +84,7 @@ public class SettingsActivity extends AppCompatActivity {
         options.add(getString(R.string.faq_fragment)); //fragment 3
         options.add(getString(R.string.sign_out_info_fragment)); //fragment 4
 
-
         ArrayAdapter<String> adapter = new ArrayAdapter<>(mContext, android.R.layout.simple_list_item_1, options);
-
 
         listView.setAdapter(adapter);
 

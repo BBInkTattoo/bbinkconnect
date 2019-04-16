@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:background="@color/white">
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white">
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
         android:id="@+id/comment_profile_image"
         android:layout_marginTop="15dp"
-        android:layout_marginLeft="20dp"
-
+        android:layout_marginLeft="14dp"
         app:civ_border_color="@color/selector_item_color"
         app:civ_border_width="0.5dp"/>
 
@@ -27,28 +27,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="60dp"
-            android:layout_marginBottom="20dp">
+            android:layout_marginBottom="8dp">
 
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="19dp"
                 android:text="Dennis Joch"
                 android:id="@+id/comment_username"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="8dp"
                 android:textColor="@color/selector_item_color"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/comment"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_below="@+id/comment_username"
                 android:text="this is a comment"
-                android:layout_marginLeft="5dp"
                 android:textColor="@color/selector_item_color"
-                android:textSize="18sp"
-                android:layout_toRightOf="@+id/comment_username"
-                android:id="@+id/comment"/>
+                android:textSize="16sp" />
 
 
             <TextView
@@ -59,7 +60,7 @@
                 android:textSize="14sp"
                 android:id="@+id/comment_time_posted"
                 android:layout_marginTop="15dp"
-                android:layout_marginLeft="15dp"
+                android:layout_marginLeft="8dp"
                 android:layout_below="@+id/comment"/>
 
             <TextView

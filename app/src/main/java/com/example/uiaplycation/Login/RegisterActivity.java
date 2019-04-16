@@ -1,11 +1,11 @@
 package com.example.uiaplycation.Login;
 
-import android.content.Context;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -131,7 +131,6 @@ public class RegisterActivity extends AppCompatActivity {
                 if (user != null) {
                     // User is signed in
 
-
                     myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -177,7 +176,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                 //add new user to the database
                 addNewUser(email, mUsername, "", "", "");
-
 
                 Toast.makeText(getApplicationContext(), getString(R.string.signup_successful), Toast.LENGTH_SHORT).show();
 

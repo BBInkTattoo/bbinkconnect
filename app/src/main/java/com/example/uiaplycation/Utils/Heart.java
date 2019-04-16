@@ -8,13 +8,9 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.ImageView;
 
-/**
- * Created by User on 8/21/2017.
- */
+
 
 public class Heart {
-
-    private static final String TAG = "Heart";
 
     private static final DecelerateInterpolator DECCELERATE_INTERPOLATOR = new DecelerateInterpolator();
     private static final AccelerateInterpolator ACCELERATE_INTERPOLATOR = new AccelerateInterpolator();
@@ -27,13 +23,11 @@ public class Heart {
     }
 
     public void toggleLike(){
-        Log.d(TAG, "toggleLike: toggling heart.");
-
         AnimatorSet animationSet =  new AnimatorSet();
 
 
         if(heartRed.getVisibility() == View.VISIBLE){
-            Log.d(TAG, "toggleLike: toggling red heart off.");
+
             heartRed.setScaleX(0.1f);
             heartRed.setScaleY(0.1f);
 
@@ -52,7 +46,7 @@ public class Heart {
         }
 
         else if(heartRed.getVisibility() == View.GONE){
-            Log.d(TAG, "toggleLike: toggling red heart on.");
+
             heartRed.setScaleX(0.1f);
             heartRed.setScaleY(0.1f);
 

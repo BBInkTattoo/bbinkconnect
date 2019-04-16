@@ -1,8 +1,5 @@
 package com.example.uiaplycation.Utils;
 
-/**
- * Created by User on 6/26/2017.
- */
 
 public class StringManipulation {
 

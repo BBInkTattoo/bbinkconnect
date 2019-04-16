@@ -280,10 +280,8 @@ public class ProfileFragment extends Fragment {
 
                 if (user != null) {
                     // User is signed in
-
                 } else {
                     // User is signed out
-
                 }
 
             }
@@ -296,9 +294,7 @@ public class ProfileFragment extends Fragment {
 
                 //retrieve user information from the database
                 setProfileWidgets(mFirebaseMethods.getUserSettings(dataSnapshot));
-
                 //retrieve images for the user in question
-
             }
 
             @Override

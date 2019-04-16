@@ -23,12 +23,8 @@ import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 public class ProfileActivity extends AppCompatActivity {
 
-    private static final String TAG = "HomeActivity";
     private Context mContext = ProfileActivity.this;
     private static final int ACTIVITY_NUM = 2;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,10 +75,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     }
 
-
-    /**
-     * BottomNavigationView setup
-     */
     private void setupBottomNavigationView() {
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);

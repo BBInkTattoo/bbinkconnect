@@ -58,7 +58,6 @@ public class LoginActivity extends AppCompatActivity {
     //firebase
     private FirebaseAuth mAuth;
 
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -147,12 +146,12 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onCancel() {
-                Toast.makeText(getApplicationContext(), "Geht", Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
             public void onError(FacebookException error) {
-                Toast.makeText(getApplicationContext(), "geht nicht", Toast.LENGTH_SHORT).show();
+
             }
         });
 
@@ -210,10 +209,8 @@ public class LoginActivity extends AppCompatActivity {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             firebaseAuthWithGoogle(account);
 
-            Toast.makeText(getApplicationContext(), "Geht", Toast.LENGTH_SHORT).show();
-
         } catch (ApiException e) {
-            Toast.makeText(getApplicationContext(), "geht nicht", Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -247,8 +244,6 @@ public class LoginActivity extends AppCompatActivity {
                         } else {
                             mPleaseWait.setVisibility(View.GONE);
                             mProgressBar.setVisibility(View.GONE);
-                            Toast.makeText(getApplicationContext(), "geht nicht", Toast.LENGTH_SHORT).show();
-
                         }
 
                     }
@@ -270,12 +265,10 @@ public class LoginActivity extends AppCompatActivity {
                             mPleaseWait.setVisibility(View.GONE);
                             mProgressBar.setVisibility(View.GONE);
                             goMainScreen();
-                            Toast.makeText(getApplicationContext(), "geht", Toast.LENGTH_SHORT).show();
                         } else {
                             // If sign in fails, display a message to the user.
                             mPleaseWait.setVisibility(View.GONE);
                             mProgressBar.setVisibility(View.GONE);
-                            Toast.makeText(getApplicationContext(), "geht nicht", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

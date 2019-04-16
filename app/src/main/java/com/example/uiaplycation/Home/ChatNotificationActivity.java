@@ -22,7 +22,6 @@ import java.util.Objects;
 
 public class ChatNotificationActivity extends AppCompatActivity {
 
-    private static final String TAG = "HomeActivity";
     private Context mContext = ChatNotificationActivity.this;
     private static final int ACTIVITY_NUM = 0;
     private ViewPager mViewPager;
@@ -34,15 +33,9 @@ public class ChatNotificationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_chat_notification);
         mViewPager = findViewById(R.id.pager);
 
-
-
         setupBottomNavigationView();
         setupViewPager();
     }
-
-    /**
-     * Fragment setup
-     */
 
     private void setupViewPager(){
         SectionsPagerAdapter adapter = new SectionsPagerAdapter(getSupportFragmentManager());
@@ -58,13 +51,7 @@ public class ChatNotificationActivity extends AppCompatActivity {
 
     }
 
-
-
-    /**
-     * BottomNavigationView setup
-     */
     private void setupBottomNavigationView() {
-        Log.d(TAG, "setupBottomNavigationView: setting up BottomNavigationView");
         BottomNavigationViewEx bottomNavigationViewEx = findViewById(R.id.bottomNavViewBar);
         BottomNavigationViewHelper.setupBottomNavigationView(bottomNavigationViewEx);
         BottomNavigationViewHelper.enableNavigation(mContext, this, bottomNavigationViewEx);

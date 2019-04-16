@@ -5,10 +5,6 @@ import android.os.Parcelable;
 
 import java.util.List;
 
-/**
- * Created by User on 7/29/2017.
- */
-
 public class Photo implements Parcelable {
 
     private String caption;
@@ -35,6 +31,7 @@ public class Photo implements Parcelable {
         this.tags = tags;
         this.likes = likes;
         this.comments = comments;
+
     }
 
     protected Photo(Parcel in) {
@@ -113,6 +110,7 @@ public class Photo implements Parcelable {
         return photo_id;
     }
 
+
     public void setPhoto_id(String photo_id) {
         this.photo_id = photo_id;
     }
@@ -153,4 +151,5 @@ public class Photo implements Parcelable {
                 ", likes=" + likes +
                 '}';
     }
+
 }

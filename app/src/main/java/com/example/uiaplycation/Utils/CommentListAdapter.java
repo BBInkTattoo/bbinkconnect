@@ -34,13 +34,7 @@ import java.util.TimeZone;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-/**
- * Created by User on 8/22/2017.
- */
-
 public class CommentListAdapter extends ArrayAdapter<Comment> {
-
-    private static final String TAG = "CommentListAdapter";
 
     private LayoutInflater mInflater;
     private int layoutResource;
@@ -86,6 +80,8 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
         //set the comment
         holder.comment.setText(getItem(position).getComment());
 
+
+
         //set the timestamp difference
         String timestampDifference = getTimestampDifference(getItem(position));
         if(!timestampDifference.equals("0")){
@@ -118,7 +114,7 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
-                Log.d(TAG, "onCancelled: query cancelled.");
+
             }
         });
 
@@ -129,7 +125,7 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
                 holder.reply.setVisibility(View.GONE);
             }
         }catch (NullPointerException e){
-            Log.e(TAG, "getView: NullPointerException: " + e.getMessage() );
+
         }
 
 
@@ -141,12 +137,11 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
      * @return
      */
     private String getTimestampDifference(Comment comment){
-        Log.d(TAG, "getTimestampDifference: getting timestamp difference.");
 
         String difference = "";
         Calendar c = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.CANADA);
-        sdf.setTimeZone(TimeZone.getTimeZone("Canada/Pacific"));//google 'android list of timezones'
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.GERMANY);
+        sdf.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));//google 'android list of timezones'
         Date today = c.getTime();
         sdf.format(today);
         Date timestamp;
@@ -155,7 +150,7 @@ public class CommentListAdapter extends ArrayAdapter<Comment> {
             timestamp = sdf.parse(photoTimestamp);
             difference = String.valueOf(Math.round(((today.getTime() - timestamp.getTime()) / 1000 / 60 / 60 / 24 )));
         }catch (ParseException e){
-            Log.e(TAG, "getTimestampDifference: ParseException: " + e.getMessage() );
+
             difference = "0";
         }
         return difference;

@@ -11,19 +11,10 @@ import android.util.Log;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * Created by User on 10/29/2017.
- */
-
 public class RotateBitmap {
-
-    private static final String TAG = "RotateBitmap";
 
     private Context mContext;
 
-    /*
-    ----------------------------- Image Rotation --------------------------------------------------
-     */
 
     private static Bitmap rotateImage(Bitmap img, int degree) {
         Matrix matrix = new Matrix();
@@ -33,14 +24,6 @@ public class RotateBitmap {
         return rotatedImg;
     }
 
-    /**
-     * This method is responsible for solving the rotation issue if exist. Also scale the images to
-     * 1024x1024 resolution
-     *
-     * @param selectedImage The Image URI
-     * @return Bitmap image results
-     * @throws IOException
-     */
     public Bitmap HandleSamplingAndRotationBitmap(Context context, Uri selectedImage)
             throws IOException {
         mContext = context;
@@ -103,13 +86,6 @@ public class RotateBitmap {
         return inSampleSize;
     }
 
-    /**
-     * Rotate an image if required.
-     *
-     * @param img           The image bitmap
-     * @param selectedImage Image URI
-     * @return The resulted Bitmap after manipulation
-     */
     private Bitmap rotateImageIfRequired(Bitmap img, Uri selectedImage) throws IOException {
 
         InputStream input = mContext.getContentResolver().openInputStream(selectedImage);
@@ -130,7 +106,7 @@ public class RotateBitmap {
                     return img;
             }
         } catch (NullPointerException e) {
-            Log.e(TAG, "rotateImageIfRequired: Could not read file." + e.getMessage());
+
         }
         return img;
     }

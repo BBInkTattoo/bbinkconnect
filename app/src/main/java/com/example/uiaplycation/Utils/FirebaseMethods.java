@@ -45,8 +45,6 @@ import java.util.TimeZone;
 
 public class FirebaseMethods {
 
-    private static final String TAG = "FirebaseMethods";
-
     //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -71,14 +69,11 @@ public class FirebaseMethods {
         }
     }
 
-    public void uploadNewPhoto(String photoType, final String caption,final int count, final String imgUrl,
-                               Bitmap bm){
-        Log.d(TAG, "uploadNewPhoto: attempting to uplaod new photo.");
+    public void uploadNewPhoto(String photoType, final String caption,final int count, final String imgUrl, Bitmap bm){
 
         FilePaths filePaths = new FilePaths();
         //case1) new photo
         if(photoType.equals(mContext.getString(R.string.new_photo))){
-            Log.d(TAG, "uploadNewPhoto: uploading NEW photo.");
 
             String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
             StorageReference storageReference = mStorageReference
@@ -111,7 +106,7 @@ public class FirebaseMethods {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "onFailure: Photo upload failed.");
+
                     Toast.makeText(mContext, "Photo upload failed ", Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -124,15 +119,12 @@ public class FirebaseMethods {
                         mPhotoUploadProgress = progress;
                     }
 
-                    Log.d(TAG, "onProgress: upload progress: " + progress + "% done");
                 }
             });
 
         }
         //case new profile photo
         else if(photoType.equals(mContext.getString(R.string.profile_photo))){
-            Log.d(TAG, "uploadNewPhoto: uploading new PROFILE photo");
-
 
             String user_id = FirebaseAuth.getInstance().getCurrentUser().getUid();
             StorageReference storageReference = mStorageReference
@@ -166,7 +158,7 @@ public class FirebaseMethods {
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "onFailure: Photo upload failed.");
+
                     Toast.makeText(mContext, "Photo upload failed ", Toast.LENGTH_SHORT).show();
                 }
             }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
@@ -179,13 +171,11 @@ public class FirebaseMethods {
                         mPhotoUploadProgress = progress;
                     }
 
-                    Log.d(TAG, "onProgress: upload progress: " + progress + "% done");
                 }
             });
         }
 
     }
-
 
     private class BackgroundGetBytesFromBitmap extends AsyncTask<String, Integer, byte[]> {
 
@@ -198,7 +188,7 @@ public class FirebaseMethods {
                 RotateBitmap rotateBitmap = new RotateBitmap();
                 bm = rotateBitmap.HandleSamplingAndRotationBitmap(mContext, Uri.parse("file://" + params[0]));
             }catch (IOException e){
-                Log.e(TAG, "BackgroundGetBytesFromBitmap: IOException: " + e.getMessage());
+
             }
 
             bytes = ImageManager.getBytesFromBitmap(bm, ImageManager.IMAGE_SAVE_QUALITY);
@@ -241,7 +231,6 @@ public class FirebaseMethods {
     }
 
     private void setProfilePhoto(String url){
-        Log.d(TAG, "setProfilePhoto: setting new profile image: " + url);
 
         myRef.child(mContext.getString(R.string.dbname_user_account_settings))
                 .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
@@ -256,7 +245,6 @@ public class FirebaseMethods {
     }
 
     private void addPhotoToDatabase(String caption, String url){
-        Log.d(TAG, "addPhotoToDatabase: adding photo to database.");
 
         String tags = StringManipulation.getTags(caption);
         String newPhotoKey = myRef.child(mContext.getString(R.string.dbname_photos)).push().getKey();
@@ -289,15 +277,12 @@ public class FirebaseMethods {
 
     public void updateUserAccountSettings(String displayName, String website, String description, long phoneNumber){
 
-        Log.d(TAG, "updateUserAccountSettings: updating user account settings.");
-
         if(displayName != null){
             myRef.child(mContext.getString(R.string.dbname_user_account_settings))
                     .child(userID)
                     .child(mContext.getString(R.string.field_display_name))
                     .setValue(displayName);
         }
-
 
         if(website != null) {
             myRef.child(mContext.getString(R.string.dbname_user_account_settings))
@@ -322,7 +307,6 @@ public class FirebaseMethods {
     }
 
     public void updateUsername(String username){
-        Log.d(TAG, "updateUsername: upadting username to: " + username);
 
         myRef.child(mContext.getString(R.string.dbname_users))
                 .child(userID)
@@ -336,7 +320,6 @@ public class FirebaseMethods {
     }
 
     public void updateEmail(String email){
-        Log.d(TAG, "updateEmail: upadting email to: " + email);
 
         myRef.child(mContext.getString(R.string.dbname_users))
                 .child(userID)
@@ -350,7 +333,6 @@ public class FirebaseMethods {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        Log.d(TAG, "createUserWithEmail:onComplete:" + task.isSuccessful());
 
                         // If sign in fails, display a message to the user. If sign in succeeds
                         // the auth state listener will be notified and logic to handle the
@@ -364,7 +346,7 @@ public class FirebaseMethods {
                             sendVerificationEmail();
 
                             userID = mAuth.getCurrentUser().getUid();
-                            Log.d(TAG, "onComplete: Authstate changed: " + userID);
+
                         }
 
                     }
@@ -389,15 +371,6 @@ public class FirebaseMethods {
         }
     }
 
-    /**
-     * Add information to the users nodes
-     * Add information to the user_account_settings node
-     * @param email
-     * @param username
-     * @param description
-     * @param website
-     * @param profile_photo
-     */
     public void addNewUser(String email, String username, String description, String website, String profile_photo){
 
         User user = new User( userID,  1,  email,  StringManipulation.condenseUsername(username) );
@@ -425,16 +398,7 @@ public class FirebaseMethods {
 
     }
 
-
-    /**
-     * Retrieves the account settings for teh user currently logged in
-     * Database: user_acount_Settings node
-     * @param dataSnapshot
-     * @return
-     */
     public UserSettings getUserSettings(DataSnapshot dataSnapshot){
-        Log.d(TAG, "getUserSettings: retrieving user account settings from firebase.");
-
 
         UserAccountSettings settings  = new UserAccountSettings();
         User user = new User();
@@ -443,7 +407,6 @@ public class FirebaseMethods {
 
             // user_account_settings node
             if(ds.getKey().equals(mContext.getString(R.string.dbname_user_account_settings))) {
-                Log.d(TAG, "getUserSettings: user account settings node datasnapshot: " + ds);
 
                 try {
 
@@ -488,17 +451,15 @@ public class FirebaseMethods {
                                     .getFollowers()
                     );
 
-                    Log.d(TAG, "getUserAccountSettings: retrieved user_account_settings information: " + settings.toString());
                 } catch (NullPointerException e) {
-                    Log.e(TAG, "getUserAccountSettings: NullPointerException: " + e.getMessage());
+
                 }
             }
 
 
                 // users node
-                Log.d(TAG, "getUserSettings: snapshot key: " + ds.getKey());
+
                 if(ds.getKey().equals(mContext.getString(R.string.dbname_users))) {
-                    Log.d(TAG, "getUserAccountSettings: users node datasnapshot: " + ds);
 
                     user.setUsername(
                             ds.child(userID)
@@ -521,11 +482,9 @@ public class FirebaseMethods {
                                     .getUser_id()
                     );
 
-                    Log.d(TAG, "getUserAccountSettings: retrieved users information: " + user.toString());
                 }
         }
         return new UserSettings(user, settings);
-
     }
 
 }

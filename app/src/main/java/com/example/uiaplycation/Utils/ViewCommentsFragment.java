@@ -41,8 +41,6 @@ import java.util.TimeZone;
 
 public class ViewCommentsFragment extends Fragment {
 
-    private static final String TAG = "ViewCommentsFragment";
-
     public ViewCommentsFragment(){
         super();
         setArguments(new Bundle());
@@ -75,17 +73,13 @@ public class ViewCommentsFragment extends Fragment {
         mComments = new ArrayList<>();
         mContext = getActivity();
 
-
         try{
             mPhoto = getPhotoFromBundle();
             setupFirebaseAuth();
 
         }catch (NullPointerException e){
-            Log.e(TAG, "onCreateView: NullPointerException: " + e.getMessage() );
+
         }
-
-
-
 
         return view;
     }
@@ -101,13 +95,12 @@ public class ViewCommentsFragment extends Fragment {
             public void onClick(View v) {
 
                 if(!mComment.getText().toString().equals("")){
-                    Log.d(TAG, "onClick: attempting to submit new comment.");
                     addNewComment(mComment.getText().toString());
 
                     mComment.setText("");
                     closeKeyboard();
                 }else{
-                    Toast.makeText(getActivity(), "you can't post a blank comment", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), getString(R.string.you_cant_post_a_blank_comment), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -115,7 +108,6 @@ public class ViewCommentsFragment extends Fragment {
         mBackArrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d(TAG, "onClick: navigating back");
                 if(getCallingActivityFromBundle().equals(getString(R.string.home_activity))){
                     getActivity().getSupportFragmentManager().popBackStack();
                     ((HomeActivity)getActivity()).showLayout();
@@ -135,10 +127,7 @@ public class ViewCommentsFragment extends Fragment {
         }
     }
 
-
     private void addNewComment(String newComment){
-        Log.d(TAG, "addNewComment: adding new comment: " + newComment);
-
         String commentID = myRef.push().getKey();
 
         Comment comment = new Comment();
@@ -164,17 +153,12 @@ public class ViewCommentsFragment extends Fragment {
     }
 
     private String getTimestamp(){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.CANADA);
-        sdf.setTimeZone(TimeZone.getTimeZone("Canada/Pacific"));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.GERMANY);
+        sdf.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         return sdf.format(new Date());
     }
 
-    /**
-     * retrieve the photo from the incoming bundle from profileActivity interface
-     * @return
-     */
     private String getCallingActivityFromBundle(){
-        Log.d(TAG, "getPhotoFromBundle: arguments: " + getArguments());
 
         Bundle bundle = this.getArguments();
         if(bundle != null) {
@@ -184,12 +168,7 @@ public class ViewCommentsFragment extends Fragment {
         }
     }
 
-    /**
-     * retrieve the photo from the incoming bundle from profileActivity interface
-     * @return
-     */
     private Photo getPhotoFromBundle(){
-        Log.d(TAG, "getPhotoFromBundle: arguments: " + getArguments());
 
         Bundle bundle = this.getArguments();
         if(bundle != null) {
@@ -199,15 +178,7 @@ public class ViewCommentsFragment extends Fragment {
         }
     }
 
-           /*
-    ------------------------------------ Firebase ---------------------------------------------
-     */
-
-    /**
-     * Setup the firebase auth object
-     */
     private void setupFirebaseAuth(){
-        Log.d(TAG, "setupFirebaseAuth: setting up firebase auth.");
 
         mAuth = FirebaseAuth.getInstance();
         mFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -221,12 +192,11 @@ public class ViewCommentsFragment extends Fragment {
 
                 if (user != null) {
                     // User is signed in
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+
                 } else {
                     // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
+
                 }
-                // ...
             }
         };
 
@@ -241,14 +211,12 @@ public class ViewCommentsFragment extends Fragment {
             setupWidgets();
         }
 
-
         myRef.child(mContext.getString(R.string.dbname_photos))
                 .child(mPhoto.getPhoto_id())
                 .child(mContext.getString(R.string.field_comments))
                 .addChildEventListener(new ChildEventListener() {
                     @Override
                     public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                        Log.d(TAG, "onChildAdded: child added.");
 
                         Query query = myRef
                                 .child(mContext.getString(R.string.dbname_photos))
@@ -298,7 +266,7 @@ public class ViewCommentsFragment extends Fragment {
 
                                    @Override
                                    public void onCancelled(DatabaseError databaseError) {
-                                       Log.d(TAG, "onCancelled: query cancelled.");
+
                                    }
                                });
                            }
@@ -323,9 +291,6 @@ public class ViewCommentsFragment extends Fragment {
 
                            }
                        });
-
-
-
     }
 
 

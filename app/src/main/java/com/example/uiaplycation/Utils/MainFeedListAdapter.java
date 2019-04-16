@@ -86,7 +86,6 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
         Photo photo;
     }
 
-
     @NonNull
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -165,8 +164,6 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
             }
 
         }
-
-
 
         //set the profile image
         final ImageLoader imageLoader = ImageLoader.getInstance();

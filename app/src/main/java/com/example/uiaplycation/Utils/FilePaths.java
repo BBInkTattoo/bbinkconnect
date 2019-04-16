@@ -2,10 +2,6 @@ package com.example.uiaplycation.Utils;
 
 import android.os.Environment;
 
-/**
- * Created by User on 7/24/2017.
- */
-
 public class FilePaths {
 
     //"storage/emulated/0"

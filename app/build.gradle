@@ -55,6 +55,5 @@ dependencies {
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
     implementation 'androidx.exifinterface:exifinterface:1.1.0-alpha01'
 
-
 }
 apply plugin: 'com.google.gms.google-services'
