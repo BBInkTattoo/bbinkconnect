@@ -97,7 +97,7 @@ public class FirebaseMethods {
                     Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
 
                     //add the new photo to 'photos' node and 'user_photos' node
-                    addPhotoToDatabase(caption, firebaseUrl.toString());
+                    addPhotoToDatabase(caption, firebaseUrl);
 
                     //navigate to the main feed so the user can see their photo
                     Intent intent = new Intent(mContext, HomeActivity.class);
@@ -147,7 +147,7 @@ public class FirebaseMethods {
                     Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
 
                     //insert into 'user_account_settings' node
-                    setProfilePhoto(firebaseUrl.toString());
+                    setProfilePhoto(firebaseUrl);
 
                     ((SettingsActivity)mContext).setViewPager(
                             ((SettingsActivity)mContext).pagerAdapter
@@ -224,10 +224,7 @@ public class FirebaseMethods {
 
 
     private boolean isMediaVideo(String uri){
-        if(uri.contains(".mp4") || uri.contains(".wmv") || uri.contains(".flv") || uri.contains(".avi")){
-            return true;
-        }
-        return false;
+        return uri.contains(".mp4") || uri.contains(".wmv") || uri.contains(".flv") || uri.contains(".avi");
     }
 
     private void setProfilePhoto(String url){

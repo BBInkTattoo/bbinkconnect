@@ -27,7 +27,6 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_photo"
-                android:src="@drawable/dennisjoch"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="8dp"

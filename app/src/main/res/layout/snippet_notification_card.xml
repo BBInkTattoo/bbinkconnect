@@ -16,7 +16,6 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/profile_photo"
-            android:src="@drawable/dennisjoch"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_centerVertical="true"
@@ -52,7 +51,6 @@
                 android:layout_marginRight="14sp"
                 android:layout_marginTop="4dp"
                 android:scaleType="centerCrop"
-                android:src="@drawable/tattoo"
                 />
 
 

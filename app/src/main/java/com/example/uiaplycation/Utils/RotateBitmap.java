@@ -44,7 +44,7 @@ public class RotateBitmap {
         options.inJustDecodeBounds = false;
         imageStream = context.getContentResolver().openInputStream(selectedImage);
 
-        Bitmap img = BitmapFactory.decodeStream(imageStream, null, options);;
+        Bitmap img = BitmapFactory.decodeStream(imageStream, null, options);
 
         img = rotateImageIfRequired(img, selectedImage);
         return img;

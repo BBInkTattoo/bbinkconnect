@@ -277,13 +277,7 @@ public class LoginActivity extends AppCompatActivity {
     //If string Null
     private boolean isStringNull(String string){
 
-        if(string.equals("")){
-            return true;
-        }
-        else
-            {
-            return false;
-            }
+        return string.equals("");
         }
 
     @Override
