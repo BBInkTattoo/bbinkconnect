@@ -2,8 +2,10 @@ package com.example.uiaplycation.Home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.media.Image;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
@@ -18,6 +20,7 @@ import android.widget.RelativeLayout;
 
 
 import com.example.uiaplycation.Login.LoginActivity;
+import com.example.uiaplycation.Share.NextActivity;
 import com.example.uiaplycation.Utils.BottomNavigationViewHelper;
 
 import com.example.uiaplycation.R;
@@ -38,6 +41,8 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
     private FrameLayout mFrameLayout;
     private RelativeLayout mRelativeLayout;
     private ViewPager mViewPager;
+
+    private static final int  CAMERA_REQUEST_CODE = 5;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -61,8 +66,36 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
         transaction.addToBackStack(getString(R.string.home_fragment));
         transaction.commit();
 
+    }
+
+    public void opencamera(View View){
+
+        Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
 
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == CAMERA_REQUEST_CODE){
+
+            Bitmap bitmap;
+            bitmap = (Bitmap) data.getExtras().get("data");
+
+
+
+            Intent intent = new Intent(this, NextActivity.class);
+            intent.putExtra(getString(R.string.selected_bitmap), bitmap);
+            startActivity(intent);
+
+
+        }
+    }
+
+
 
     public void hideLayout(){
 

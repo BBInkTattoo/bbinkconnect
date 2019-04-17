@@ -33,13 +33,14 @@
                     android:background="@drawable/searchview_bg"/>
 
                 <ImageView
-                    android:id="@+id/homecamera"
+                    android:id="@+id/btnLaunchCamera"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="14dp"
                     android:layout_marginEnd="20dp"
-                    android:src="@drawable/ic_camera"/>
+                    android:src="@drawable/ic_camera"
+                    android:onClick="opencamera"/>
 
             </RelativeLayout>
 
