@@ -8,17 +8,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:701746104104:android:fa177365863a845c",
+        "mobilesdk_app_id": "1:701746104104:android:f46e0a50feaf07f1",
         "android_client_info": {
-          "package_name": "com.example.uiaplycation"
+          "package_name": "com.bbinkconnect.bbinktattoo"
         }
       },
       "oauth_client": [
         {
-          "client_id": "701746104104-t1gfmmep194r8d9k3ccsjlvmsm2b5uk2.apps.googleusercontent.com",
+          "client_id": "701746104104-9king4u4dfvh9t3bo20mdk35l9q1i98g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.example.uiaplycation",
+            "package_name": "com.bbinkconnect.bbinktattoo",
             "certificate_hash": "2abcca4ef45872ec95af2ce6dd6bc8cf7f720ae6"
           }
         },
