@@ -13,10 +13,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.uiaplycation.R;
+import com.example.uiaplycation.models.Photo;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ViewProfileFragment extends Fragment {
+
+    public interface OnGridImageSelectedListener{
+        void onGridImageSelected(Photo photo, int activityNumber);
+    }
+
+    OnGridImageSelectedListener mOnGridImageSelectedListener;
 
     //widgets
     private TextView mPosts, mFollowers, mFollowing, mDisplayName, mUsername, mWebsite, mDescription, mFollow, mUnfollow;

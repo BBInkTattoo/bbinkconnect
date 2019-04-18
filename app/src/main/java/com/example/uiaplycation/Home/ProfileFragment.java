@@ -23,6 +23,7 @@ import com.example.uiaplycation.R;
 import com.example.uiaplycation.Utils.FirebaseMethods;
 import com.example.uiaplycation.Utils.GridImageAdapter;
 import com.example.uiaplycation.Utils.UniversalImageLoader;
+import com.example.uiaplycation.Utils.ViewProfileFragment;
 import com.example.uiaplycation.models.Comment;
 import com.example.uiaplycation.models.Like;
 import com.example.uiaplycation.models.Photo;
@@ -48,6 +49,13 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileFragment extends Fragment {
 
+
+    public interface OnGridImageSelectedListener{
+        void onGridImageSelected(Photo photo, int activityNumber);
+    }
+    OnGridImageSelectedListener mOnGridImageSelectedListener;
+
+    private static final int ACTIVITY_NUM = 4;
 
     //firebase
     private FirebaseAuth mAuth;
@@ -196,7 +204,7 @@ public class ProfileFragment extends Fragment {
                 gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                        // mOnGridImageSelectedListener.onGridImageSelected(photos.get(position), ACTIVITY_NUM);
+                         mOnGridImageSelectedListener.onGridImageSelected(photos.get(position), ACTIVITY_NUM);
                     }
                 });
             }
@@ -306,8 +314,12 @@ public class ProfileFragment extends Fragment {
 
     @Override
     public void onAttach(Context context) {
-        super.onAttach(context);
+        try{
+            mOnGridImageSelectedListener = (OnGridImageSelectedListener) getActivity();
+        }catch (ClassCastException e){
 
+        }
+        super.onAttach(context);
     }
 
     @Override

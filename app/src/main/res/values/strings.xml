@@ -128,10 +128,12 @@
     <!-- fragment -->
     <string name="view_comments_fragment" translatable="false">View Comments</string>
     <string name="view_profile_fragment" translatable="false">ViewProfile</string>
+    <string name="view_post_fragment" translatable="false">View Post</string>
 
     <!-- photo types -->
     <string name="new_photo" translatable="false">new_photo</string>
 
+    <string name="activity_number" translatable="false">activity_number</string>
 
 
 </resources>

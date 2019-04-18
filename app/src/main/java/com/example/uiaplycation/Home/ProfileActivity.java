@@ -14,14 +14,17 @@ import android.widget.Toast;
 
 import com.example.uiaplycation.R;
 import com.example.uiaplycation.Utils.BottomNavigationViewHelper;
+import com.example.uiaplycation.Utils.ViewCommentsFragment;
+import com.example.uiaplycation.Utils.ViewPostFragment;
 import com.example.uiaplycation.Utils.ViewProfileFragment;
+import com.example.uiaplycation.models.Photo;
 import com.example.uiaplycation.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
 
-public class ProfileActivity extends AppCompatActivity {
+public class ProfileActivity extends AppCompatActivity implements ProfileFragment.OnGridImageSelectedListener, ViewPostFragment.OnCommentThreadSelectedListener, ViewProfileFragment.OnGridImageSelectedListener{
 
     private Context mContext = ProfileActivity.this;
     private static final int ACTIVITY_NUM = 2;
@@ -34,6 +37,37 @@ public class ProfileActivity extends AppCompatActivity {
         setupBottomNavigationView();
 
         init();
+    }
+
+    @Override
+    public void onCommentThreadSelectedListener(Photo photo) {
+
+        ViewCommentsFragment fragment = new ViewCommentsFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(getString(R.string.photo), photo);
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.view_comments_fragment));
+        transaction.commit();
+    }
+
+    @Override
+    public void onGridImageSelected(Photo photo, int activityNumber) {
+
+        ViewPostFragment fragment = new ViewPostFragment();
+        Bundle args = new Bundle();
+        args.putParcelable(getString(R.string.photo), photo);
+        args.putInt(getString(R.string.activity_number), activityNumber);
+
+        fragment.setArguments(args);
+
+        FragmentTransaction transaction  = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(getString(R.string.view_post_fragment));
+        transaction.commit();
+
     }
 
     private void init(){
