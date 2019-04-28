@@ -134,6 +134,8 @@
     <string name="new_photo" translatable="false">new_photo</string>
 
     <string name="activity_number" translatable="false">activity_number</string>
+    <string name="no_notification">No notification</string>
+    <string name="no_chats">No chats</string>
 
 
 </resources>

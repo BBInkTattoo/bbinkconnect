@@ -1,39 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ChatNotification.ChatFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="@string/no_chats" />
+
+    <com.eschao.android.widget.elasticlistview.ElasticListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_marginTop="100dp">
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:background="@null"
+        android:cacheColorHint="#00000000"
+        android:listSelector="#00000000"
+        android:dividerHeight="1px"
+        android:scrollbars="none"
+        android:id="@+id/listView"
+        android:overScrollMode="never"
+        android:fadingEdge="none"
+        android:divider="@null"/>
 
-        <include
-            layout="@layout/snippet_new_chat"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <include
-            layout="@layout/snippet_new_chat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginRight="14sp"
+        android:layout_marginBottom="64dp"
         android:background="@color/transparent"
         android:clickable="true"
         android:src="@drawable/ic_share"
         app:backgroundTint="@color/colorPrimaryDark"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="64dp"
-        android:layout_marginRight="14sp"/>
 
-</FrameLayout>
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

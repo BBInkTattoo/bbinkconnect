@@ -1,5 +1,6 @@
 package com.bbinkconnect.bbinktattoo.Login;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -47,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
     private ProgressBar mProgressBar;
     private AccessToken accessToken;
 
+    private Context mContext = LoginActivity.this;
+
     //Facebook
     private CallbackManager mCallbackManager;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -73,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //Firebase
         mAuth = FirebaseAuth.getInstance();
+        setupFirebaseAuth();
 
         //PleaseWait and Progressbar Visible
         mPleaseWait.setVisibility(View.GONE);
@@ -283,9 +287,52 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
+
+        mAuth.addAuthStateListener(mAuthListener);
         mPleaseWait.setVisibility(View.GONE);
         mProgressBar.setVisibility(View.GONE);
 
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+       if (mAuthListener != null) {
+            mAuth.removeAuthStateListener(mAuthListener);
+        }
+    }
+
+
+    private void setupFirebaseAuth(){
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mAuthListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+
+                //check if the user is logged in
+                checkCurrentUser(user);
+
+                if (user != null) {
+                    // User is signed in
+
+                } else {
+                    // User is signed out
+
+                }
+
+            }
+        };
+    }
+
+    private void checkCurrentUser(FirebaseUser user){
+
+        if(user == null){
+            Intent intent = new Intent(mContext, LoginActivity.class);
+            startActivity(intent);
+        }
     }
 
 }

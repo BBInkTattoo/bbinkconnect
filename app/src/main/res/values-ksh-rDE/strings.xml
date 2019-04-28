@@ -75,5 +75,7 @@
     //post card
     <string name="view_all_comments_part_i">"Alle "</string>
     <string name="view_all_comments_part_ii">" Kommentare ansehen"</string>
+    <string name="no_notification">Keine benachrichtigung</string>
+    <string name="no_chats">Keine Chats</string>
 
 </resources>

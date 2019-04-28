@@ -28,6 +28,7 @@ import com.bbinkconnect.bbinktattoo.Utils.MainFeedListAdapter;
 import com.bbinkconnect.bbinktattoo.Utils.UniversalImageLoader;
 import com.bbinkconnect.bbinktattoo.Utils.ViewCommentsFragment;
 import com.bbinkconnect.bbinktattoo.models.Photo;
+import com.facebook.AccessToken;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
@@ -149,6 +150,11 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
 
     private void setupFirebaseAuth(){
 
+
+
+
+
+
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -183,6 +189,7 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
     @Override
     public void onStart() {
         super.onStart();
+
          mAuth.addAuthStateListener(mAuthListener);
          checkCurrentUser(mAuth.getCurrentUser());
     }
@@ -190,6 +197,9 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
     @Override
     public void onStop() {
         super.onStop();
+
+
+
          if (mAuthListener != null) {
             mAuth.removeAuthStateListener(mAuthListener);
          }
