@@ -3,15 +3,15 @@ package com.bbinkconnect.bbinktattoo.Utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
-import android.util.Log;
 import android.view.MenuItem;
+
+import androidx.annotation.NonNull;
 
 import com.bbinkconnect.bbinktattoo.Home.ChatNotificationActivity;
 import com.bbinkconnect.bbinktattoo.Home.HomeActivity;
 import com.bbinkconnect.bbinktattoo.Home.ProfileActivity;
 import com.bbinkconnect.bbinktattoo.R;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 

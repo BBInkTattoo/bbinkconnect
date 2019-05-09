@@ -7,13 +7,13 @@
     android:layout_height="match_parent"
     tools:context=".Home.HomeActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#ffff"
         android:id="@+id/appbarlayout">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/profileToolBar"
             android:layout_width="match_parent"
             android:layout_height="60dp">
@@ -45,7 +45,7 @@
             </RelativeLayout>
 
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
 
         <TextView
@@ -59,7 +59,7 @@
             android:textSize="14sp"
             android:textStyle="bold"/>
 
-    </android.support.design.widget.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/container"

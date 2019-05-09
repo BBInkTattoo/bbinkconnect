@@ -1,13 +1,14 @@
 package com.bbinkconnect.bbinktattoo.Settings;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+
 import com.bbinkconnect.bbinktattoo.R;
+import com.google.firebase.database.annotations.Nullable;
 
 
 public class FAQFragment extends Fragment {

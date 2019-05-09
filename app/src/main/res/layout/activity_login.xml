@@ -33,39 +33,25 @@
             android:src="@drawable/ic_bb_logo"
             android:layout_gravity="center_horizontal"/>
 
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:autofillHints=""
+            android:hint="@string/email"
+            android:inputType="textEmailAddress" />
 
-            <EditText
-                android:id="@+id/input_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                android:autofillHints=""/>
-
-        </android.support.design.widget.TextInputLayout>
-
-        <android.support.design.widget.TextInputLayout
+        <EditText
+            android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp">
+            android:autofillHints=""
+            android:hint="@string/password"
+            android:inputType="textPassword" />
 
-            <EditText
-                android:id="@+id/input_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/password"
-                android:inputType="textPassword"
-                android:autofillHints=""/>
 
-        </android.support.design.widget.TextInputLayout>
 
-        <android.support.v7.widget.AppCompatButton
+        <Button
             android:id="@+id/btn_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +62,7 @@
             android:textAllCaps="false"
             android:textColor="@color/white"/>
 
-           <com.google.android.gms.common.SignInButton
+        <com.google.android.gms.common.SignInButton
             android:id="@+id/google_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

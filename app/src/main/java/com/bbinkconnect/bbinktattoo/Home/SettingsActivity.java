@@ -3,9 +3,6 @@ package com.bbinkconnect.bbinktattoo.Home;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +12,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.ViewPager;
+
 import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.Settings.AppInfoFragment;
 import com.bbinkconnect.bbinktattoo.Settings.EditProfileFragment;
@@ -23,6 +23,7 @@ import com.bbinkconnect.bbinktattoo.Settings.SignOutFragment;
 import com.bbinkconnect.bbinktattoo.Settings.UploadTattooFragment;
 import com.bbinkconnect.bbinktattoo.Utils.FirebaseMethods;
 import com.bbinkconnect.bbinktattoo.Utils.SectionsStatePagerAdapter;
+import com.google.firebase.database.annotations.Nullable;
 
 import java.util.ArrayList;
 

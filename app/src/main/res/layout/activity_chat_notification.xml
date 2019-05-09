@@ -8,13 +8,13 @@
     tools:context=".Home.ChatNotificationActivity">
 
 
-    <android.support.design.widget.AppBarLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbarlayout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="#ffff">
 
-        <android.support.v7.widget.Toolbar
+        <androidx.appcompat.widget.Toolbar
             android:id="@+id/profileToolBar"
             android:layout_width="match_parent"
             android:layout_height="60dp">
@@ -46,36 +46,40 @@
             </RelativeLayout>
 
 
-        </android.support.v7.widget.Toolbar>
+        </androidx.appcompat.widget.Toolbar>
 
-        <android.support.design.widget.TabLayout
+
+
+
+        <com.google.android.material.tabs.TabLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:id="@+id/tabs">
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/chat"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="@string/chat"/>
+                android:text="@string/chat" />
 
-            <android.support.design.widget.TabItem
+            <com.google.android.material.tabs.TabItem
                 android:id="@+id/notification"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="@string/notification"/>
 
+        </com.google.android.material.tabs.TabLayout>
 
-        </android.support.design.widget.TabLayout>
 
+    </com.google.android.material.appbar.AppBarLayout>
 
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
-    <include layout="@layout/layout_bottom_navigation_view"/>
+    <include layout="@layout/layout_bottom_navigation_view" />
+
+
 
 </RelativeLayout>

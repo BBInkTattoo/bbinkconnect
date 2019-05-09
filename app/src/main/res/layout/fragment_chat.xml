@@ -28,17 +28,16 @@
         android:divider="@null"/>
 
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/floatingActionButton"
+
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@drawable/ic_share"
         android:layout_marginRight="14sp"
         android:layout_marginBottom="64dp"
-        android:background="@color/transparent"
-        android:clickable="true"
-        android:src="@drawable/ic_share"
-        app:backgroundTint="@color/colorPrimaryDark"
-
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"/>
 
