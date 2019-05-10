@@ -24,8 +24,8 @@
             android:layout_marginStart="14dp"
             android:layout_marginTop="14dp"
             android:layout_toEndOf="@+id/app"
-            android:text="1.0.0"
-            android:textStyle="bold"/>
+            android:text="1.0.2"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 </FrameLayout>

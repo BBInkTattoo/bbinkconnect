@@ -73,6 +73,7 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
     public void opencamera(View View){
 
         Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
         startActivityForResult(cameraIntent, CAMERA_REQUEST_CODE);
 
     }
@@ -84,9 +85,9 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
 
         if(requestCode == CAMERA_REQUEST_CODE){
 
+
             Bitmap bitmap;
             bitmap = (Bitmap) data.getExtras().get("data");
-
 
 
             Intent intent = new Intent(this, NextActivity.class);
