@@ -72,6 +72,7 @@
     <string name="signup_successful">Registrierung erfolgreich. Bestätigungs-E-Mail wird gesendet.</string>
     <string name="couldnt_send_verification_email">Es konnte keine Bestätigungs-E-Mail gesendet werden.</string>
     <string name="you_cant_post_a_blank_comment">Sie können keinen leeren Kommentar posten</string>
+    <string name="upload_new_photo">Foto wird hochgeladen</string>
     //post card
     <string name="view_all_comments_part_i">"Alle "</string>
     <string name="view_all_comments_part_ii">" Kommentare ansehen"</string>

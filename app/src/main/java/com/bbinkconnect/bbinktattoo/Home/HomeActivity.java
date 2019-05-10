@@ -151,11 +151,6 @@ public class HomeActivity extends AppCompatActivity implements MainFeedListAdapt
 
     private void setupFirebaseAuth(){
 
-
-
-
-
-
         mAuth = FirebaseAuth.getInstance();
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {

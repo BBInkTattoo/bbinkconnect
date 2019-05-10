@@ -90,17 +90,28 @@ public class FirebaseMethods {
             uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    String firebaseUrl = taskSnapshot.getMetadata().getReference().getDownloadUrl().toString();
 
-                    Toast.makeText(mContext, "photo upload success", Toast.LENGTH_SHORT).show();
 
-                    //add the new photo to 'photos' node and 'user_photos' node
-                    addPhotoToDatabase(caption, firebaseUrl);
+                    if (taskSnapshot.getMetadata() != null) {
+                        if (taskSnapshot.getMetadata().getReference() != null) {
+                            Task<Uri> result = taskSnapshot.getStorage().getDownloadUrl();
+                            result.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    String firebaseUrl = uri.toString();
+                                    //createNewPost(imageUrl);
+                                    addPhotoToDatabase(caption, firebaseUrl);
+                                }
+                            });
+                        }
+                    }
 
                     //navigate to the main feed so the user can see their photo
                     Intent intent = new Intent(mContext, HomeActivity.class);
                     mContext.startActivity(intent);
+
                 }
+
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {

@@ -4,11 +4,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import androidx.annotation.LayoutRes;
@@ -72,7 +74,7 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
         String likesString;
         TextView username, timeDetla, caption, likes, comments;
         SquareImageView image;
-        ImageView heartRed, heartWhite, comment;
+        ImageView heartRed, heartWhite,buttonViewOption, comment;
 
         UserAccountSettings settings = new UserAccountSettings();
         User user  = new User();
@@ -104,6 +106,43 @@ public class MainFeedListAdapter extends ArrayAdapter<Photo> {
             holder.caption = convertView.findViewById(R.id.image_caption);
             holder.timeDetla = convertView.findViewById(R.id.image_time_posted);
             holder.mprofileImage = convertView.findViewById(R.id.profile_photo);
+
+            holder.buttonViewOption = convertView.findViewById(R.id.ivEllipses);
+
+
+
+            holder.buttonViewOption.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    //creating a popup menu
+                    PopupMenu popup = new PopupMenu(mContext, holder.buttonViewOption);
+                    //inflating menu from xml resource
+                    popup.inflate(R.menu.menu_post);
+                    //adding click listener
+                    popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            switch (item.getItemId()) {
+                                case R.id.share_link:
+                                    //handle menu1 click
+                                    return true;
+                                case R.id.copy_link:
+                                    //handle menu2 click
+                                    return true;
+                                case R.id.report:
+                                    //handle menu3 click
+                                    return true;
+                                default:
+                                    return false;
+                            }
+                        }
+                    });
+                    //displaying the popup
+                    popup.show();
+
+                }
+            });
 
             convertView.setTag(holder);
         }
