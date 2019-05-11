@@ -42,15 +42,15 @@
         </activity>
 
 
-        <activity android:name=".Home.CameraActivity"></activity>
-        <activity android:name=".Home.SettingsActivity" />
-        <activity android:name=".Home.ChatNotificationActivity" />
-        <activity android:name=".Login.RegisterActivity"/>
+
+        <activity android:name=".home.SettingsActivity" />
+        <activity android:name=".home.ChatNotificationActivity" />
+        <activity android:name=".login.RegisterActivity"/>
         <activity android:name=".MainActivity" />
-        <activity android:name=".Share.NextActivity"/>
-        <activity android:name=".Home.ProfileActivity" />
-        <activity android:name=".Home.HomeActivity"/>
-        <activity android:name=".Login.LoginActivity"
+        <activity android:name=".share.NextActivity"/>
+        <activity android:name=".home.ProfileActivity" />
+        <activity android:name=".home.HomeActivity"/>
+        <activity android:name=".login.LoginActivity"
                   android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

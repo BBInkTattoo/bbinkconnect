@@ -23,9 +23,9 @@
     <string name="email">Email</string>
     <string name="password">Passwort</string>
     <string name="login">Anmelden</string>
-    <string name="no_account_yet_create_one">Kein Account? Registriere dich...</string>
+    <string name="no_account_yet_create_one">Kein Account? Registriere dich…</string>
     <string name="login_with_google">Anmelden mit Google</string>
-    <string name="please_wait">Bitte warten...</string>
+    <string name="please_wait">Bitte warten…</string>
     <string name="agb">AGB</string>
     <string name="and">und</string>
     <string name="dsgvo">DSGVO</string>
@@ -39,7 +39,7 @@
     <string name="copy_link">Link kopieren</string>
     <string name="report">Melden</string>
     <string name="share">Teilen</string>
-    <string name="write_a_description">Beschreibung hinzufügen...</string>
+    <string name="write_a_description">Beschreibung hinzufügen…</string>
     <string name="register_a_new_account">Erstelle einen neuen Account</string>
     <string name="full_name">Ganzer Name</string>
     <string name="register">Registrieren</string>
@@ -57,14 +57,13 @@
     <string name="phone_number">Telefonnummer</string>
     <string name="phone">Telefonnummer</string>
     <string name="next">Weiter</string>
-    <string name="gallery">Gallerie</string>
+    <string name="gallery">Galerie</string>
     <string name="sign_out">Abmelden</string>
     <string name="are_you_sure_you_want_to_sign_out">Möchten Sie sich wirklich abmelden?</string>
     <string name="comments">Kommentare</string>
-    <string name="add_a_comment">Einen Kommentar hinzufügen...</string>
+    <string name="add_a_comment">Einen Kommentar hinzufügen…</string>
     <string name="photo">Foto</string>
-    <string name="processing">Wird bearbeitet...</string>
-
+    <string name="processing">Wird bearbeitet…</string>
     //Toast
     <string name="text_null">Sie müssen alle Felder ausfüllen</string>
     <string name="login_failed">Anmeldung Fehlgeschlagen</string>
@@ -78,5 +77,7 @@
     <string name="view_all_comments_part_ii">" Kommentare ansehen"</string>
     <string name="no_notification">Keine benachrichtigung</string>
     <string name="no_chats">Keine Chats</string>
+    <string name="write_a_message">Write a message</string>
+    <string name="pia_esspunkt">Pia Esspunkt</string>
 
 </resources>

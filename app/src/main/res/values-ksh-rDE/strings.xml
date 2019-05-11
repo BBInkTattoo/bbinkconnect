@@ -78,5 +78,6 @@
     <string name="view_all_comments_part_ii">" Kommentare ansehen"</string>
     <string name="no_notification">Keine benachrichtigung</string>
     <string name="no_chats">Keine Chats</string>
+    <string name="write_a_message">Write a message</string>
 
 </resources>

@@ -137,6 +137,8 @@
     <string name="activity_number" translatable="false">activity_number</string>
     <string name="no_notification">No notification</string>
     <string name="no_chats">No chats</string>
+    <string name="write_a_message">Write a message</string>
+    <string name="pia_esspunkt">Pia Esspunkt</string>
 
 
 </resources>
