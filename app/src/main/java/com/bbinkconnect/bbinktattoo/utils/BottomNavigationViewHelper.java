@@ -11,7 +11,7 @@ import com.bbinkconnect.bbinktattoo.home.ChatNotificationActivity;
 import com.bbinkconnect.bbinktattoo.home.HomeActivity;
 import com.bbinkconnect.bbinktattoo.home.ProfileActivity;
 import com.bbinkconnect.bbinktattoo.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
+import android.support.design.widget.BottomNavigationView;
 import com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx;
 
 
