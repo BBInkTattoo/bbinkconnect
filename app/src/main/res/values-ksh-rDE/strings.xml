@@ -64,7 +64,7 @@
     <string name="add_a_comment">Einen Kommentar hinzufügen...</string>
     <string name="photo">Foto</string>
     <string name="processing">Wird bearbeitet...</string>
-
+<string name="pia_esspunkt">Pia Esspunkt</string>
     //Toast
     <string name="text_null">Sie müssen alle Felder ausfüllen</string>
     <string name="login_failed">Anmeldung Fehlgeschlagen</string>
