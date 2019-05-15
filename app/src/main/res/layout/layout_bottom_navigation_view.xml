@@ -12,7 +12,7 @@
             android:id="@+id/bottomNavViewBar"
             android:background="@drawable/white_grey_border_top"
             app:menu="@menu/menu_navigation_with_view_pager">
-
+            app:itemIconTint="@drawable/tint_color"
 
         </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 
