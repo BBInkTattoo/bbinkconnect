@@ -48,57 +48,28 @@
         android:textColor="@color/selector_item_color"
         android:gravity="center_horizontal"
         android:layout_marginBottom="8dp"/>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
-
+    
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
             android:hint="@string/email"
             android:id="@+id/input_email"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
-
+        
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
             android:hint="@string/full_name"
             android:id="@+id/input_username"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp">
-
+        
         <EditText
             android:id="@+id/input_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
             android:inputType="textPassword"/>
-
-    </android.support.design.widget.TextInputLayout>
-
-
-    <android.support.v7.widget.AppCompatButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
@@ -109,11 +80,7 @@
         android:textColor="@color/white"
         android:background="@drawable/ic_next"/>
 
-
 </LinearLayout>
-
-
-
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -147,7 +114,6 @@
             android:textColor="@color/selector_item_color"
             android:textSize="20sp"/>
     </LinearLayout>
-
 
 </RelativeLayout>
 
