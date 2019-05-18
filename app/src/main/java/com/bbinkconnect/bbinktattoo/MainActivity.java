@@ -6,12 +6,9 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.SearchView;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-
 import com.bbinkconnect.bbinktattoo.fragments.ChatNotificationFragment;
 import com.bbinkconnect.bbinktattoo.fragments.HomeFragment;
 import com.bbinkconnect.bbinktattoo.fragments.ProfileFragment;
