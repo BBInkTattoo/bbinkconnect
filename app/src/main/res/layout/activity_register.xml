@@ -1,122 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"/>
-
-    <TextView
-        android:id="@+id/loadingPleaseWait"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/progressBar"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:text="@string/please_wait"
-        android:textColor="@color/selector_item_color"
-        android:textSize="20sp"/>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingTop="55dp"
-    android:paddingLeft="25dp"
-    android:paddingRight="25dp">
+    android:padding="10dp"
+    android:gravity="center"
+    tools:context=".RegisterActivity">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imageView3"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:src="@drawable/ic_bb_logo"/>
+        android:src="@drawable/ic_bb_logo" />
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/register_a_new_account"
-        android:textSize="20sp"
-        android:textColor="@color/selector_item_color"
-        android:gravity="center_horizontal"
-        android:layout_marginBottom="8dp"/>
-    
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"
-            android:id="@+id/input_email"/>
-        
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"
-            android:hint="@string/full_name"
-            android:id="@+id/input_username"/>
-        
-        <EditText
-            android:id="@+id/input_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="textPassword"/>
+        android:background="@drawable/edittext_background"
+        android:hint="Username"
+        android:id="@+id/username"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:hint="Full name"
+        android:id="@+id/fullname"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:hint="Email"
+        android:id="@+id/email"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:hint="Password"
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"/>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
-        android:layout_marginTop="25dp"
-        android:text="@string/register"
-        android:id="@+id/btn_register"
-        android:padding="12dp"
+        android:layout_marginTop="15dp"
+        android:text="Register"
+        android:id="@+id/register"
         android:textColor="@color/white"
         android:background="@drawable/ic_next"/>
 
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already have an sccount? Log in"
+        android:id="@+id/txt_login"
+        android:layout_marginTop="10dp"/>
+
 </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="14sp"
-        android:gravity="bottom|center"
-        android:orientation="horizontal">
-
-        <TextView
-            android:id="@+id/agb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/agb"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/and"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:id="@+id/dsgvo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dsgvo"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp"/>
-    </LinearLayout>
-
-</RelativeLayout>
-
 
 
 

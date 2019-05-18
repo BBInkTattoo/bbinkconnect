@@ -1,143 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:orientation="vertical"
+    android:padding="10dp"
+    android:gravity="center"
+    tools:context=".LoginActivity">
 
-    <ProgressBar
-        android:id="@+id/progressBar"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"/>
+        android:src="@drawable/ic_bb_logo" />
 
-
-
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="25dp"
-        android:paddingTop="55dp"
-        android:paddingRight="25dp">
+        android:background="@drawable/edittext_background"
+        android:hint="Email"
+        android:id="@+id/email"
+        android:inputType="textEmailAddress"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"/>
 
-
-
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:src="@drawable/ic_bb_logo"
-            android:layout_gravity="center_horizontal"/>
-
-        <EditText
-            android:id="@+id/input_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/email"
-            android:inputType="textEmailAddress" />
-
-        <EditText
-            android:id="@+id/input_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:autofillHints=""
-            android:hint="@string/password"
-            android:inputType="textPassword" />
-
-
-
-        <Button
-            android:id="@+id/btn_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:background="@drawable/ic_next"
-            android:padding="12dp"
-            android:text="@string/login"
-            android:textAllCaps="false"
-            android:textColor="@color/white"/>
-
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/google_login"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center_horizontal"
-            app:colorScheme="dark"/>
-
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/login_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="25dp"/>
-
-        <TextView
-            android:id="@+id/link_signup"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="25dp"
-            android:gravity="center"
-            android:text="@string/no_account_yet_create_one"
-            android:textColor="@color/design_default_color_primary_dark"
-            android:textSize="16sp"/>
-
-
-        <TextView
-            android:id="@+id/pleaseWait"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:text="@string/please_wait"
-            android:layout_gravity="center_horizontal"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp" />
-
-    </LinearLayout>
-
-
-
-    <LinearLayout
+    <EditText
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="14sp"
-        android:gravity="bottom|center"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_background"
+        android:hint="Password"
+        android:id="@+id/password"
+        android:inputType="textPassword"
+        android:layout_marginTop="15dp"
+        android:padding="10dp"/>
 
-        <TextView
-            android:id="@+id/agb"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/agb"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Log in"
+        android:id="@+id/login"
+        android:textColor="@color/white"
+        android:background="@drawable/ic_next"/>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:text="@string/and"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Don't have an sccount? Sign up"
+        android:id="@+id/txt_signup"
+        android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:id="@+id/dsgvo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dsgvo"
-            android:textColor="@color/selector_item_color"
-            android:textSize="20sp"/>
-    </LinearLayout>
-
-
-
-</RelativeLayout>
+</LinearLayout>

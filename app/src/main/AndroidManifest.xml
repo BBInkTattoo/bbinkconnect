@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.bbinkconnect.bbinktattoo">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.bbinkconnect.bbinktattoo"
+    tools:ignore="GoogleAppIndexingWarning">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
@@ -24,40 +26,49 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-9307288200117598~4014758980"/>
 
-
-
-        <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges= "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
-        <activity
-            android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="@string/fb_login_protocol_scheme" />
-            </intent-filter>
-        </activity>
-
-
-
-        <activity android:name=".home.SettingsActivity" />
-        <activity android:name=".home.ChatNotificationActivity" />
-        <activity android:name=".login.RegisterActivity"/>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".share.NextActivity"/>
-        <activity android:name=".home.ProfileActivity" />
-        <activity android:name=".home.HomeActivity"/>
-        <activity android:name=".login.LoginActivity"
-                  android:launchMode="singleInstance">
+        <activity android:name=".StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    </application>
+        <activity android:name=".LoginActivity"
+            android:parentActivityName=".StartActivity" />
+
+        <activity android:name=".RegisterActivity"
+            android:parentActivityName=".StartActivity" />
+
+        <activity android:name=".MainActivity" />
+       <activity android:name=".PostActivity" />
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".CommentsActivity" />
+        <activity android:name=".OptionsActivity" />
+        <activity android:name=".EditProfileActivity" />
+        <activity android:name=".FollowersActivity" />
+       <activity android:name=".StoryActivity" />
+         <activity android:name=".AddStoryActivity" />
+        <activity android:name=".MessageActivity" />
+       <service
+           android:name=".notifications.MyFirebaseMessaging"
+           android:enabled="true"
+           android:exported="true">
+           <intent-filter>
+               <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+           </intent-filter>
+       </service>
+
+       <service
+           android:name=".notifications.MyFirebaseIdService"
+           android:enabled="true"
+           android:exported="true">
+           <intent-filter>
+               <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+           </intent-filter>
+       </service>
+
+   </application>
 
 </manifest>
