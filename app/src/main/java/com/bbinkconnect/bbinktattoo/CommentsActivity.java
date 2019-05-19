@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -104,6 +105,7 @@ public class CommentsActivity extends AppCompatActivity {
         hashMap.put("publisher", firebaseUser.getUid());
         hashMap.put("commentid", commentid);
 
+        assert commentid != null;
         reference.child(commentid).setValue(hashMap);
         addNotification();
         addcomment.setText("");
@@ -126,13 +128,13 @@ public class CommentsActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 Glide.with(getApplicationContext()).load(Objects.requireNonNull(user).getImageurl()).into(image_profile);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -143,7 +145,7 @@ public class CommentsActivity extends AppCompatActivity {
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 commentList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Comment comment = snapshot.getValue(Comment.class);
@@ -154,7 +156,7 @@ public class CommentsActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

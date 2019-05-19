@@ -81,14 +81,11 @@ public class MainActivity extends AppCompatActivity {
                             editor.putString("profileid", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
                             editor.apply();
                             selectedfragment = new ProfileFragment();
-
                             break;
                     }
                     if (selectedfragment != null) {
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                selectedfragment).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedfragment).commit();
                     }
-
                     return true;
                 }
             };

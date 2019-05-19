@@ -363,7 +363,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Notifications").child(userid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     if (Objects.requireNonNull(snapshot.child("postid").getValue()).equals(postid)){
                         snapshot.getRef().removeValue()
@@ -378,7 +378,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -388,12 +388,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Likes").child(postId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 likes.setText(dataSnapshot.getChildrenCount()+" likes");
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -404,12 +404,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Comments").child(postId);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 comments.setText("View All "+dataSnapshot.getChildrenCount()+" Comments");
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -421,7 +421,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 Glide.with(mContext).load(Objects.requireNonNull(user).getImageurl()).into(image_profile);
                 username.setText(user.getUsername());
@@ -429,7 +429,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -443,7 +443,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 .child("Likes").child(postid);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(Objects.requireNonNull(firebaseUser).getUid()).exists()){
                     imageView.setImageResource(R.drawable.ic_heart_red);
                     imageView.setTag("liked");
@@ -454,7 +454,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -468,19 +468,18 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 .child("Saves").child(Objects.requireNonNull(firebaseUser).getUid());
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(postid).exists()){
-                    imageView.setImageResource(R.drawable.ic_bookmark);
+                    imageView.setImageResource(R.drawable.ic_bookmark_orange);
                     imageView.setTag("saved");
                 } else{
-                    // TODO: 18.05.2019 Ic bookmark black
                     imageView.setImageResource(R.drawable.ic_bookmark);
                     imageView.setTag("save");
                 }
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -526,12 +525,12 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                 .child(postid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 editText.setText(Objects.requireNonNull(dataSnapshot.getValue(Post.class)).getDescription());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

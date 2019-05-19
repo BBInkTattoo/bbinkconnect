@@ -33,7 +33,7 @@ public class ChatNotificationFragment extends Fragment {
     private DatabaseReference reference;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat_notification, container, false);
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -66,6 +66,8 @@ public class ChatNotificationFragment extends Fragment {
                 viewPagerAdapter.addFragment(new NotificationFragment(), "Notification");
 
                 viewPagerAdapter.addFragment(new UsersFragment(), "Users");
+
+                viewPagerAdapter.addFragment(new SearchFragment(), "Search");
 
                 viewPager.setAdapter(viewPagerAdapter);
 

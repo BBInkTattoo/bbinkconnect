@@ -237,7 +237,7 @@ public class MessageActivity extends AppCompatActivity {
                     apiService.sendNotification(sender)
                             .enqueue(new Callback<MyResponse>() {
                                 @Override
-                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                public void onResponse(@NonNull Call<MyResponse> call, @NonNull Response<MyResponse> response) {
                                         if (response.code() == 200){
                                         if (Objects.requireNonNull(response.body()).success != 1){
                                             Toast.makeText(MessageActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
@@ -246,7 +246,7 @@ public class MessageActivity extends AppCompatActivity {
                                 }
 
                                 @Override
-                                public void onFailure(Call<MyResponse> call, Throwable t) {
+                                public void onFailure(@NonNull Call<MyResponse> call, @NonNull Throwable t) {
 
                                 }
                             });

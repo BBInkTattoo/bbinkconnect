@@ -117,14 +117,14 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 Glide.with(mContext).load(Objects.requireNonNull(user).getImageurl()).into(imageView);
                 username.setText(user.getUsername());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -136,13 +136,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
 
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
                 Glide.with(mContext).load(Objects.requireNonNull(post).getPostimage()).into(post_image);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:padding="8dp"
     android:layout_height="wrap_content">
 
@@ -14,6 +13,7 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/linid"
         android:layout_toRightOf="@id/image_profile"
         android:layout_toEndOf="@id/image_profile"
         android:layout_marginLeft="5dp"
@@ -40,13 +40,15 @@
     </LinearLayout>
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:background="@drawable/ic_next"
-        android:visibility="gone"
         android:id="@+id/btn_follow"
-        android:textColor="@color/colorPrimary"
+        android:layout_width="150dp"
+        android:layout_height="28dp"
         android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:layout_marginStart="126dp"
+        android:layout_marginEnd="14dp"
+        android:background="@drawable/ic_next"
+        android:textColor="@color/white"
+        android:visibility="gone"/>
+
 </RelativeLayout>

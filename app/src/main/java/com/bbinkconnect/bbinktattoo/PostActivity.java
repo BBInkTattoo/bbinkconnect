@@ -87,7 +87,7 @@ public class PostActivity extends AppCompatActivity {
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
 
-            StorageTask uploadTask = fileReference.putFile(mImageUri);
+            StorageTask<UploadTask.TaskSnapshot> uploadTask = fileReference.putFile(mImageUri);
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -101,6 +101,7 @@ public class PostActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
+                        assert downloadUri != null;
                         miUrlOk = downloadUri.toString();
 
                         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
@@ -113,6 +114,7 @@ public class PostActivity extends AppCompatActivity {
                         hashMap.put("description", description.getText().toString());
                         hashMap.put("publisher", Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
 
+                        assert postid != null;
                         reference.child(postid).setValue(hashMap);
 
                         pd.dismiss();

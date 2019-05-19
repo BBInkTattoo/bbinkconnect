@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bbinkconnect.bbinktattoo.R;
-import com.bbinkconnect.bbinktattoo.adapter.UserAdapter;
 import com.bbinkconnect.bbinktattoo.adapter.UserAdapterChat;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.google.firebase.auth.FirebaseAuth;
@@ -42,8 +41,7 @@ public class UsersFragment extends Fragment {
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_users, container, false);
 

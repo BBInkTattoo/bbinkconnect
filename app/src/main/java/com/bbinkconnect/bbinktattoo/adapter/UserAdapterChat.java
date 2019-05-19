@@ -8,10 +8,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bbinkconnect.bbinktattoo.MessageActivity;
 import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.model.Chat;
@@ -24,8 +22,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
@@ -160,7 +156,7 @@ public class UserAdapterChat extends RecyclerView.Adapter<UserAdapterChat.ViewHo
                 .child("Follow").child(Objects.requireNonNull(firebaseUser).getUid()).child("following");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if (dataSnapshot.child(userid).exists()){
                     button.setText("following");
                 } else{
@@ -169,7 +165,7 @@ public class UserAdapterChat extends RecyclerView.Adapter<UserAdapterChat.ViewHo
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

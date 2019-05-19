@@ -1,7 +1,10 @@
 <component name="ProjectDictionaryState">
   <dictionary name="Dennis">
     <words>
+      <w>profileid</w>
+      <w>publisherid</w>
       <w>searchview</w>
+      <w>selectedfragment</w>
     </words>
   </dictionary>
 </component>

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -82,7 +83,7 @@ public class FollowersActivity extends AppCompatActivity {
                 .child(id).child(getIntent().getStringExtra("storyid")).child("views");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 idList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     idList.add(snapshot.getKey());
@@ -91,7 +92,7 @@ public class FollowersActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -102,7 +103,7 @@ public class FollowersActivity extends AppCompatActivity {
                 .child(id).child("followers");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 idList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     idList.add(snapshot.getKey());
@@ -111,7 +112,7 @@ public class FollowersActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -122,7 +123,7 @@ public class FollowersActivity extends AppCompatActivity {
                 .child(id).child("following");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 idList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     idList.add(snapshot.getKey());
@@ -131,7 +132,7 @@ public class FollowersActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -142,7 +143,7 @@ public class FollowersActivity extends AppCompatActivity {
                 .child(id);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 idList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     idList.add(snapshot.getKey());
@@ -151,7 +152,7 @@ public class FollowersActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -161,7 +162,7 @@ public class FollowersActivity extends AppCompatActivity {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 userList.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     User user = snapshot.getValue(User.class);
@@ -175,7 +176,7 @@ public class FollowersActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

@@ -56,7 +56,6 @@ public class MyFotosAdapter extends RecyclerView.Adapter<MyFotosAdapter.ImageVie
                         new PostDetailFragment()).commit();
             }
         });
-
     }
 
     @Override
@@ -68,10 +67,8 @@ public class MyFotosAdapter extends RecyclerView.Adapter<MyFotosAdapter.ImageVie
 
         final ImageView post_image;
 
-
         ImageViewHolder(View itemView) {
             super(itemView);
-
             post_image = itemView.findViewById(R.id.post_image);
 
         }

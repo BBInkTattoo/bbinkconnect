@@ -75,7 +75,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         return mChat.size();
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         final TextView show_message;
         final ImageView profile_image;
@@ -93,6 +93,7 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
     @Override
     public int getItemViewType(int position) {
         FirebaseUser fuser = FirebaseAuth.getInstance().getCurrentUser();
+        assert fuser != null;
         if (mChat.get(position).getSender().equals(fuser.getUid())){
             return MSG_TYPE_RIGHT;
         } else {

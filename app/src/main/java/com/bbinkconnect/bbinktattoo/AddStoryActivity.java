@@ -44,7 +44,6 @@ public class AddStoryActivity extends AppCompatActivity {
         CropImage.activity()
                 .setAspectRatio(9,16)
                 .start(AddStoryActivity.this);
-
     }
 
     private String getFileExtension(Uri uri){
@@ -61,7 +60,7 @@ public class AddStoryActivity extends AppCompatActivity {
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
 
-            StorageTask uploadTask = fileReference.putFile(mImageUri);
+            StorageTask<UploadTask.TaskSnapshot> uploadTask = fileReference.putFile(mImageUri);
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -75,6 +74,7 @@ public class AddStoryActivity extends AppCompatActivity {
                 public void onComplete(@NonNull Task<Uri> task) {
                     if (task.isSuccessful()) {
                         Uri downloadUri = task.getResult();
+                        assert downloadUri != null;
                         miUrlOk = downloadUri.toString();
 
                         String myid = Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid();
@@ -92,6 +92,7 @@ public class AddStoryActivity extends AppCompatActivity {
                         hashMap.put("storyid", storyid);
                         hashMap.put("userid", myid);
 
+                        assert storyid != null;
                         reference.child(storyid).setValue(hashMap);
 
                         pd.dismiss();

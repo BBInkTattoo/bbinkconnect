@@ -144,14 +144,14 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
 
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 Glide.with(mContext).load(Objects.requireNonNull(user).getImageurl()).into(imageView);
                 username.setText(user.getUsername());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

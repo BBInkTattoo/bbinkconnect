@@ -71,7 +71,6 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
                 if (viewHolder.getAdapterPosition() == 0){
                     myStory(viewHolder.addstory_text, viewHolder.story_photo, true);
                 } else {
-                    // TODO: go to story
                     Intent intent = new Intent(mContext, StoryActivity.class);
                     intent.putExtra("userid", story.getUserid());
                     mContext.startActivity(intent);
@@ -116,7 +115,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 Glide.with(mContext).load(Objects.requireNonNull(user).getImageurl()).into(viewHolder.story_photo);
                 if (pos != 0) {
@@ -126,7 +125,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -137,7 +136,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int count = 0;
                 long timecurrent = System.currentTimeMillis();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
@@ -153,7 +152,6 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
                         alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "View Story",
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
-                                        //TODO: go to story
                                         Intent intent = new Intent(mContext, StoryActivity.class);
                                         intent.putExtra("userid", FirebaseAuth.getInstance().getCurrentUser().getUid());
                                         mContext.startActivity(intent);
@@ -185,7 +183,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -196,7 +194,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
                 .child(userid);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int i = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     if (!snapshot.child("views")
@@ -216,7 +214,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });

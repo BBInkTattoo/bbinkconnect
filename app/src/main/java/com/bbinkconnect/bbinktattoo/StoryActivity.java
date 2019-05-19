@@ -1,5 +1,6 @@
 package com.bbinkconnect.bbinktattoo;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -48,6 +49,7 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
     private String userid;
 
     private final View.OnTouchListener onTouchListener = new View.OnTouchListener() {
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             long limit = 500L;
@@ -75,24 +77,19 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
         story_photo = findViewById(R.id.story_photo);
         story_username = findViewById(R.id.story_username);
 
-        //
-        //
         LinearLayout r_seen = findViewById(R.id.r_seen);
         seen_number = findViewById(R.id.seen_number);
         ImageView story_delete = findViewById(R.id.story_delete);
 
         r_seen.setVisibility(View.GONE);
         story_delete.setVisibility(View.GONE);
-        //
 
         userid = getIntent().getStringExtra("userid");
 
-        //
         if (userid.equals(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())){
             r_seen.setVisibility(View.VISIBLE);
             story_delete.setVisibility(View.VISIBLE);
         }
-        //
 
         getStories(userid);
         userInfo(userid);
@@ -106,7 +103,6 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
         });
         reverse.setOnTouchListener(onTouchListener);
 
-
         View skip = findViewById(R.id.skip);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,7 +112,6 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
         });
         skip.setOnTouchListener(onTouchListener);
 
-        //
         r_seen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,27 +139,20 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
                 });
             }
         });
-
-        //
-
     }
 
     @Override
     public void onNext() {
         Glide.with(getApplicationContext()).load(images.get(++counter)).into(image);
-        //
         addView(storyids.get(counter));
         seenNumber(storyids.get(counter));
-        //
     }
 
     @Override
     public void onPrev() {
         if ((counter - 1) < 0) return;
         Glide.with(getApplicationContext()).load(images.get(--counter)).into(image);
-        //
         seenNumber(storyids.get(counter));
-        //
     }
 
     @Override
@@ -197,7 +185,7 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
                 .child(userid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 images.clear();
                 storyids.clear();
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
@@ -215,14 +203,12 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
                 storiesProgressView.startStories(counter);
 
                 Glide.with(getApplicationContext()).load(images.get(counter)).into(image);
-                //
                 addView(storyids.get(counter));
                 seenNumber(storyids.get(counter));
-                //
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
@@ -233,20 +219,19 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
                 .child(userid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
                 Glide.with(getApplicationContext()).load(Objects.requireNonNull(user).getImageurl()).into(story_photo);
                 story_username.setText(user.getUsername());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
 
-    //
     private void addView(String storyid){
         FirebaseDatabase.getInstance().getReference().child("Story").child(userid)
                 .child(storyid).child("views").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(true);
@@ -257,15 +242,14 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
                 .child(userid).child(storyid).child("views");
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 seen_number.setText(""+dataSnapshot.getChildrenCount());
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
         });
     }
-    //
 }
