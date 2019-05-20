@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -55,11 +57,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         ImageButton ClickImageButton = findViewById(R.id.btnLaunchCamera);
+        ImageButton ClickImageButton2 = findViewById(R.id.imageButton2);
 
         ClickImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(MainActivity.this, PostActivity.class));
+            }
+        });
+
+        ClickImageButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, OptionsActivity.class));
+            }
+        });
+
+
+        SearchView searchView = (SearchView) findViewById(R.id.searchView_home);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
             }
         });
 

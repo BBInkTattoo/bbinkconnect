@@ -22,7 +22,7 @@
         android:text="Log in"
         android:id="@+id/login"
         android:textColor="@color/white"
-        android:background="@drawable/ic_next"/>
+        android:background="@drawable/roundedbutton"/>
 
     <Button
         android:layout_width="match_parent"
@@ -31,6 +31,6 @@
         android:text="Register"
         android:id="@+id/register"
         android:textColor="@color/white"
-        android:background="@drawable/ic_next"/>
+        android:background="@drawable/roundedbutton"/>
 
 </LinearLayout>

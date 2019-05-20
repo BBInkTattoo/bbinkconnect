@@ -42,13 +42,13 @@
         android:text="Log in"
         android:id="@+id/login"
         android:textColor="@color/white"
-        android:background="@drawable/ic_next"/>
+        android:background="@drawable/roundedbutton"/>
 
     <TextView
+        android:id="@+id/txt_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have an sccount? Sign up"
-        android:id="@+id/txt_signup"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        android:text="Don't have an account? Sign up" />
 
 </LinearLayout>
