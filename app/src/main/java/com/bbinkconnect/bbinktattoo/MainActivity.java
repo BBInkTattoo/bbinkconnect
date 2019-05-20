@@ -36,8 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
         BottomNavigationView bottom_navigation = findViewById(R.id.bottom_navigation);
         bottom_navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
-
+        
+       // bottom_navigation.getMenu().findItem(R.id.home).setChecked(true);
+        
+        
         Bundle intent = getIntent().getExtras();
         if (intent != null) {
             String publisher = intent.getString("publisherid");
