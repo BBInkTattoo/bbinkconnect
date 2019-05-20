@@ -1,6 +1,7 @@
 package com.bbinkconnect.bbinktattoo.fragments;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,11 +12,15 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bbinkconnect.bbinktattoo.MainActivity;
+import com.bbinkconnect.bbinktattoo.PostActivity;
 import com.bbinkconnect.bbinktattoo.R;
+import com.bbinkconnect.bbinktattoo.SearchActivity;
 import com.bbinkconnect.bbinktattoo.adapter.UserAdapterChat;
 import com.bbinkconnect.bbinktattoo.model.Chatlist;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bbinkconnect.bbinktattoo.notifications.Token;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -74,6 +79,14 @@ public class ChatsFragment extends Fragment {
 
         updateToken(FirebaseInstanceId.getInstance().getToken());
 
+
+        FloatingActionButton messagebtnchat = (FloatingActionButton) view.findViewById(R.id.floatingActionButton2);
+        messagebtnchat.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), SearchActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }

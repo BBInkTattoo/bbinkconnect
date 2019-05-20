@@ -275,18 +275,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
                                     return true;
                                 case R.id.report:
                                     Toast.makeText(mContext, "Reported clicked!", Toast.LENGTH_SHORT).show();
-
-                                    final String id_2 = post.getPostid();
-                                    FirebaseDatabase.getInstance().getReference("Posts")
-                                            .child(post.getPostid()).removeValue()
-                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                                @Override
-                                                public void onComplete(@NonNull Task<Void> task) {
-                                                    if (task.isSuccessful()){
-                                                        deleteNotifications(id_2, firebaseUser.getUid());
-                                                    }
-                                                }
-                                            });
                                 default:
                                     return false;
                             }

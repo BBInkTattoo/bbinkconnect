@@ -51,6 +51,7 @@
        <activity android:name=".StoryActivity" />
          <activity android:name=".AddStoryActivity" />
         <activity android:name=".MessageActivity" />
+        <activity android:name=".SearchActivity" />
        <service
            android:name=".notifications.MyFirebaseMessaging"
            android:enabled="true"

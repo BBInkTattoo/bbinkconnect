@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.bbinkconnect.bbinktattoo.R;
@@ -48,7 +49,8 @@ public class ChatNotificationFragment extends Fragment {
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getFragmentManager());
+                //ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getFragmentManager());
+                ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getChildFragmentManager());
                 int unread = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
@@ -65,8 +67,6 @@ public class ChatNotificationFragment extends Fragment {
 
                 viewPagerAdapter.addFragment(new NotificationFragment(), "Notification");
 
-                viewPagerAdapter.addFragment(new UsersFragment(), "Users");
-
                 viewPagerAdapter.addFragment(new SearchFragment(), "Search");
 
                 viewPager.setAdapter(viewPagerAdapter);
@@ -82,8 +82,8 @@ public class ChatNotificationFragment extends Fragment {
         });
         return view;
     }
-    class ViewPagerAdapter extends FragmentPagerAdapter {
-
+    //class ViewPagerAdapter extends FragmentPagerAdapter {
+    class ViewPagerAdapter extends FragmentStatePagerAdapter {
         private final ArrayList<Fragment> fragments;
         private final ArrayList<String> titles;
 
