@@ -49,6 +49,7 @@ public class ChatNotificationFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getFragmentManager());
+                // ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getChildFragmentManager());
                 int unread = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Chat chat = snapshot.getValue(Chat.class);
@@ -82,6 +83,7 @@ public class ChatNotificationFragment extends Fragment {
         });
         return view;
     }
+    // class ViewPagerAdapter extends FragmentStatePagerAdapter {
     class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private final ArrayList<Fragment> fragments;
