@@ -30,78 +30,89 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:orientation="vertical"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="4dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="4dp"
                     android:layout_height="80dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
-                        android:gravity="center"
                         android:layout_height="wrap_content"
+                        android:gravity="center"
                         android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:id="@+id/posts"
-                                android:textColor="@color/black"
-                                android:layout_gravity="center"
-                                android:textSize="18sp"
-                                android:textStyle="bold"/>
-
-                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="posts"/>
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/post"
+                                android:textAlignment="center" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="35dp"
                             android:orientation="vertical">
 
                             <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
                                 android:id="@+id/followers"
-                                android:textColor="@color/black"
-                                android:layout_gravity="center"
-                                android:textSize="18sp"
-                                android:textStyle="bold"/>
-
-                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="followers"/>
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:text="@string/followers"
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp"
+                                android:textAlignment="center" />
 
                         </LinearLayout>
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="35dp"
                             android:orientation="vertical">
 
                             <TextView
+                                android:id="@+id/following"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:textColor="@color/black"
                                 android:layout_gravity="center"
+                                android:textColor="@color/black"
                                 android:textSize="18sp"
-                                android:id="@+id/following"
-                                android:textStyle="bold"/>
+                                android:textStyle="bold" />
 
                             <TextView
+                                android:layout_marginLeft="4dp"
+                                android:layout_marginRight="4dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="following"/>
+                                android:text="@string/following"
+                                android:textAlignment="center" />
 
                         </LinearLayout>
 
@@ -109,12 +120,12 @@
 
                     <Button
                         android:id="@+id/edit_profile"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:paddingRight="4dp"
-                        android:paddingLeft="4dp"
                         android:background="@drawable/roundedbutton"
+                        android:paddingLeft="4dp"
+                        android:paddingRight="4dp"
                         android:textColor="@color/white" />
 
                 </LinearLayout>

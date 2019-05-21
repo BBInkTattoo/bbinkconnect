@@ -79,5 +79,6 @@
     <string name="no_notification">Keine benachrichtigung</string>
     <string name="no_chats">Keine Chats</string>
     <string name="write_a_message">Write a message</string>
+    <string name="post">Beiträge</string>
 
 </resources>

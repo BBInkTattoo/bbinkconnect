@@ -45,6 +45,8 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
     //
 
     private List<String> images;
+
+
     private List<String> storyids;
     private String userid;
 

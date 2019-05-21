@@ -32,6 +32,7 @@ public class ChatNotificationFragment extends Fragment {
 
     private FirebaseUser firebaseUser;
     private DatabaseReference reference;
+    public ValueEventListener listener;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,16 +41,13 @@ public class ChatNotificationFragment extends Fragment {
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
-
         final TabLayout tabLayout = view.findViewById(R.id.tab_layout_chat);
         final ViewPager viewPager = view.findViewById(R.id.view_pager_chat);
 
-
         reference = FirebaseDatabase.getInstance().getReference("Chats");
-        reference.addValueEventListener(new ValueEventListener() {
+        listener = reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getFragmentManager());
                 ChatNotificationFragment.ViewPagerAdapter viewPagerAdapter = new ChatNotificationFragment.ViewPagerAdapter(getChildFragmentManager());
                 int unread = 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
@@ -64,15 +62,10 @@ public class ChatNotificationFragment extends Fragment {
                 } else {
                     viewPagerAdapter.addFragment(new ChatsFragment(), "("+unread+") Chats");
                 }
-
                 viewPagerAdapter.addFragment(new NotificationFragment(), "Notification");
-
                 viewPagerAdapter.addFragment(new SearchFragment(), "Search");
-
                 viewPager.setAdapter(viewPagerAdapter);
-
                 tabLayout.setupWithViewPager(viewPager);
-
             }
 
             @Override
@@ -82,8 +75,9 @@ public class ChatNotificationFragment extends Fragment {
         });
         return view;
     }
-    //class ViewPagerAdapter extends FragmentPagerAdapter {
+
     class ViewPagerAdapter extends FragmentStatePagerAdapter {
+
         private final ArrayList<Fragment> fragments;
         private final ArrayList<String> titles;
 
@@ -113,6 +107,12 @@ public class ChatNotificationFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             return titles.get(position);
         }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        reference.removeEventListener(listener);
     }
 
 }

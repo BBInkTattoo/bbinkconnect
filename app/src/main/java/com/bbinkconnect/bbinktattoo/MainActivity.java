@@ -33,12 +33,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ImageButton ClickImageButton = findViewById(R.id.btnLaunchCamera);
+        ImageButton ClickImageButton2 = findViewById(R.id.imageButton2);
+        BottomNavigationView bottom_navigation = findViewById(R.id.bottom_navigation);
+        SearchView searchView = findViewById(R.id.searchView_home);
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
-        BottomNavigationView bottom_navigation = findViewById(R.id.bottom_navigation);
         bottom_navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
-
         bottom_navigation.getMenu().findItem(R.id.home).setChecked(true);
 
         Bundle intent = getIntent().getExtras();
@@ -49,15 +52,10 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("profileid", publisher);
             editor.apply();
 
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new ProfileFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
         } else {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new HomeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         }
-
-        ImageButton ClickImageButton = findViewById(R.id.btnLaunchCamera);
-        ImageButton ClickImageButton2 = findViewById(R.id.imageButton2);
 
         ClickImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,9 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(MainActivity.this, OptionsActivity.class));
             }
         });
-
-
-        SearchView searchView = (SearchView) findViewById(R.id.searchView_home);
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

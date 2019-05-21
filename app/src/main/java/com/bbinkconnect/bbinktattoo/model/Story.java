@@ -54,7 +54,5 @@ public class Story {
         return userid;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
-    }
+    public void setUserid(String userid) { this.userid = userid; }
 }
