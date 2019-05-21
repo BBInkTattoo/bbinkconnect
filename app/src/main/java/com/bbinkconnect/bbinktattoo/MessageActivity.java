@@ -106,6 +106,7 @@ public class MessageActivity extends AppCompatActivity {
                 notify = true;
                 String msg = text_send.getText().toString();
                 if (!msg.equals("")){
+                    sendMessage(fuser.getUid(), userid, msg);
             } else {
                 Toast.makeText(MessageActivity.this, getString(R.string.You_cant_send_empty_message), Toast.LENGTH_SHORT).show();
                 }
