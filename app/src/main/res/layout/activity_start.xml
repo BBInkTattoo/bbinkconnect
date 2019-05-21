@@ -16,21 +16,21 @@
         android:src="@drawable/ic_bb_logo" />
 
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Log in"
-        android:id="@+id/login"
-        android:textColor="@color/white"
-        android:background="@drawable/roundedbutton"/>
+        android:background="@drawable/roundedbutton"
+        android:text="@string/login"
+        android:textColor="@color/white" />
 
     <Button
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Register"
-        android:id="@+id/register"
-        android:textColor="@color/white"
-        android:background="@drawable/roundedbutton"/>
+        android:background="@drawable/roundedbutton"
+        android:text="@string/register"
+        android:textColor="@color/white" />
 
 </LinearLayout>

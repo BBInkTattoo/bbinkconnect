@@ -62,8 +62,8 @@ public class ChatNotificationFragment extends Fragment {
                 } else {
                     viewPagerAdapter.addFragment(new ChatsFragment(), "("+unread+") Chats");
                 }
-                viewPagerAdapter.addFragment(new NotificationFragment(), "Notification");
-                viewPagerAdapter.addFragment(new SearchFragment(), "Search");
+                viewPagerAdapter.addFragment(new NotificationFragment(), getString(R.string.notification));
+                viewPagerAdapter.addFragment(new SearchFragment(), getString(R.string.Search));
                 viewPager.setAdapter(viewPagerAdapter);
                 tabLayout.setupWithViewPager(viewPager);
             }

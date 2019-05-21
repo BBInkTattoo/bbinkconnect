@@ -64,6 +64,9 @@
     <string name="add_a_comment">Einen Kommentar hinzufügen…</string>
     <string name="photo">Foto</string>
     <string name="processing">Wird bearbeitet…</string>
+    <string name="posting">Wird gepostet…</string>
+    <string name="something_gone_wrong">Etwas ist schief gelaufen!</string>
+
     //Toast
     <string name="text_null">Sie müssen alle Felder ausfüllen</string>
     <string name="login_failed">Anmeldung Fehlgeschlagen</string>
@@ -80,5 +83,17 @@
     <string name="write_a_message">Write a message</string>
     <string name="pia_esspunkt">Pia Esspunkt</string>
     <string name="post">Beiträge</string>
+    <string name="All_fields_are_required">Alle Felder müssen ausgefüllt werden!</string>
+    <string name="Password_must_have_six_characters">Das Passwort muss 6 Zeichen haben!</string>
+    <string name="You_cant_register_with_this_email_or_password">Sie können sich nicht mit dieser E-Mail registrieren.</string>
+    <string name="Posting_post">Dein Beitrag wird gepostet...</string>
+    <string name="Failed">Der Beitrag konnte nicht hochgeladen werden.</string>
+    <string name="No_image_selected">Kein Bild ausgewählt...</string>
+    <string name="You_cant_send_empty_message">Sie können keine leere Nachricht senden</string>
+    <string name="Search">Suchen</string>
+    <string name="Add_a_comment">Schreib ein kommentar...</string>
+    <string name="Save">Speichern</string>
+    <string name="Change_Photo">Profilbild ändern</string>
+    <string name="Log_Out">Abmelden</string>
 
 </resources>

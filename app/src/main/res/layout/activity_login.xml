@@ -16,39 +16,39 @@
         android:src="@drawable/ic_bb_logo" />
 
     <EditText
+        android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
-        android:hint="Email"
-        android:id="@+id/email"
-        android:inputType="textEmailAddress"
         android:layout_marginTop="15dp"
-        android:padding="10dp"/>
+        android:background="@drawable/edittext_background"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp" />
 
     <EditText
+        android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
-        android:hint="Password"
-        android:id="@+id/password"
-        android:inputType="textPassword"
         android:layout_marginTop="15dp"
-        android:padding="10dp"/>
+        android:background="@drawable/edittext_background"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
 
     <Button
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Log in"
-        android:id="@+id/login"
-        android:textColor="@color/white"
-        android:background="@drawable/roundedbutton"/>
+        android:background="@drawable/roundedbutton"
+        android:text="@string/login"
+        android:textColor="@color/white" />
 
     <TextView
         android:id="@+id/txt_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Don't have an account? Sign up" />
+        android:text="@string/no_account_yet_create_one" />
 
 </LinearLayout>

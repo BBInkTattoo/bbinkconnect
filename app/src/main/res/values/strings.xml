@@ -104,7 +104,9 @@
     <string name="field_phone_number" translatable="false">phone_number</string>
     <string name="field_email" translatable="false">email</string>
     <string name="dbname_followers" translatable="false">followers</string>
+    <string name="posting">Posting</string>#
 
+    <string name="something_gone_wrong">Something gone wrong!</string>
     <!-- post card -->
     <string name="view_all_comments_part_i">View all </string>
     <string name="view_all_comments_part_ii"> comments</string>
@@ -140,6 +142,18 @@
     <string name="write_a_message">Write a message</string>
     <string name="pia_esspunkt">Pia Esspunkt</string>
     <string name="post">post</string>
+    <string name="All_fields_are_required">All fields are required!</string>
+    <string name="Password_must_have_six_characters">Password must have 6 characters!</string>
+    <string name="You_cant_register_with_this_email_or_password">You can\'t register with this email or password</string>
+    <string name="Posting_post">Your contribution will be posted.</string>
+    <string name="Failed">Failed</string>
+    <string name="No_image_selected">No image selected...</string>
+    <string name="You_cant_send_empty_message">You can\'t send empty message!</string>
+    <string name="Search">Search</string>
+    <string name="Add_a_comment">Add a comment...</string>
+    <string name="Save">Save</string>
+    <string name="Change_Photo">Change Photo</string>
+    <string name="Log_Out">Log Out</string>
 
 
 </resources>

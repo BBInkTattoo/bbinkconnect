@@ -81,7 +81,7 @@ public class PostActivity extends AppCompatActivity {
 
     private void uploadImage_10(){
         final ProgressDialog pd = new ProgressDialog(this);
-        pd.setMessage("Posting");
+        pd.setMessage(getString(R.string.Posting_post));
         pd.show();
         if (mImageUri != null){
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
@@ -123,7 +123,7 @@ public class PostActivity extends AppCompatActivity {
                         finish();
 
                     } else {
-                        Toast.makeText(PostActivity.this, "Failed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PostActivity.this, getString(R.string.Failed), Toast.LENGTH_SHORT).show();
                     }
                 }
             }).addOnFailureListener(new OnFailureListener() {
@@ -134,7 +134,7 @@ public class PostActivity extends AppCompatActivity {
             });
 
         } else {
-            Toast.makeText(PostActivity.this, "No image selected", Toast.LENGTH_SHORT).show();
+            Toast.makeText(PostActivity.this, getString(R.string.No_image_selected), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -149,7 +149,7 @@ public class PostActivity extends AppCompatActivity {
 
             image_added.setImageURI(mImageUri);
         } else {
-            Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.something_gone_wrong), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(PostActivity.this, MainActivity.class));
             finish();
         }

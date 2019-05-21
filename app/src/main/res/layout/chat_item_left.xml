@@ -22,12 +22,24 @@
         android:padding="8dp"
         android:background="@drawable/background_left"/>
 
-    <TextView
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/txt_seen"
-        android:visibility="gone"
-        android:layout_below="@id/show_message"/>
+        android:layout_below="@id/show_message"
+        android:src="@drawable/ic_tick_grey"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"/>
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txt_not_seen"
+        android:layout_below="@id/show_message"
+        android:src="@drawable/ic_tick_green"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"/>
 
 </RelativeLayout>

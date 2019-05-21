@@ -16,51 +16,51 @@
         android:src="@drawable/ic_bb_logo" />
 
     <EditText
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
-        android:hint="Username"
         android:id="@+id/username"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
-        android:hint="Full name"
+        android:hint="@string/username"
+        android:padding="10dp" />
+
+    <EditText
         android:id="@+id/fullname"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
         android:background="@drawable/edittext_background"
-        android:hint="Email"
+        android:hint="@string/full_name"
+        android:padding="10dp" />
+
+    <EditText
         android:id="@+id/email"
-        android:inputType="textEmailAddress"
-        android:layout_marginTop="15dp"
-        android:padding="10dp"/>
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
-        android:hint="Password"
-        android:id="@+id/password"
-        android:inputType="textPassword"
         android:layout_marginTop="15dp"
-        android:padding="10dp"/>
+        android:background="@drawable/edittext_background"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/edittext_background"
+        android:hint="@string/password"
+        android:inputType="textPassword"
+        android:padding="10dp" />
 
     <Button
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Register"
-        android:id="@+id/register"
-        android:textColor="@color/white"
-        android:background="@drawable/roundedbutton"/>
+        android:background="@drawable/roundedbutton"
+        android:text="@string/register"
+        android:textColor="@color/white" />
 
 
     <TextView
@@ -68,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Already have an account? Log in" />
+        android:text="@string/login" />
 
 </LinearLayout>
 

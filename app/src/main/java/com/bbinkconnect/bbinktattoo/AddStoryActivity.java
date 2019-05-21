@@ -54,7 +54,7 @@ public class AddStoryActivity extends AppCompatActivity {
 
     private void uploadImage_10(){
         final ProgressDialog pd = new ProgressDialog(this);
-        pd.setMessage("Posting");
+        pd.setMessage(getString(R.string.posting));
         pd.show();
         if (mImageUri != null){
             final StorageReference fileReference = storageRef.child(System.currentTimeMillis()
@@ -127,7 +127,7 @@ public class AddStoryActivity extends AppCompatActivity {
             uploadImage_10();
 
         } else {
-            Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.something_gone_wrong), Toast.LENGTH_SHORT).show();
             startActivity(new Intent(AddStoryActivity.this, MainActivity.class));
             finish();
         }

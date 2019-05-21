@@ -36,25 +36,25 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Edit Profile"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="10dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
+                    android:layout_toEndOf="@id/close"
+                    android:text="@string/edit_profile"
                     android:textColor="@color/colorPrimaryDark"
-                    android:layout_toEndOf="@id/close"/>
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/save"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:text="SAVE"
-                    android:id="@+id/save"
-                    android:textSize="16sp"
-                    android:layout_centerVertical="true"
-                    android:textColor="@color/colorPrimary"
+                    android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
-                    android:layout_alignParentEnd="true" />
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:text="@string/Save"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="16sp" />
 
             </RelativeLayout>
 
@@ -77,35 +77,35 @@
             android:layout_margin="10dp"/>
 
         <TextView
+            android:id="@+id/tv_change"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Change Photo"
             android:layout_gravity="center"
-            android:id="@+id/tv_change"
+            android:text="@string/Change_Photo"
             android:textColor="@color/colorPrimary"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
+            android:id="@+id/fullname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:hint="Full Name"
-            android:id="@+id/fullname"
-            app:met_floatingLabel="normal"/>
+            android:hint="@string/full_name"
+            app:met_floatingLabel="normal" />
 
         <com.rengwuxian.materialedittext.MaterialEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Username"
             android:id="@+id/username"
-            app:met_floatingLabel="normal"/>
-
-        <com.rengwuxian.materialedittext.MaterialEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Bio"
+            android:hint="@string/username"
+            app:met_floatingLabel="normal" />
+
+        <com.rengwuxian.materialedittext.MaterialEditText
             android:id="@+id/bio"
-            app:met_floatingLabel="normal"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/description"
+            app:met_floatingLabel="normal" />
 
     </LinearLayout>
 

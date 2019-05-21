@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 pd = new ProgressDialog(RegisterActivity.this);
-                pd.setMessage("Please wait...");
+                pd.setMessage(getString(R.string.please_wait));
                 pd.show();
 
                 String str_username = username.getText().toString();
@@ -66,9 +66,9 @@ public class RegisterActivity extends AppCompatActivity {
                 String str_password = password.getText().toString();
 
                 if (TextUtils.isEmpty(str_username) || TextUtils.isEmpty(str_fullname) || TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)){
-                    Toast.makeText(RegisterActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getText(R.string.All_fields_are_required), Toast.LENGTH_SHORT).show();
                 } else if(str_password.length() < 6){
-                    Toast.makeText(RegisterActivity.this, "Password must have 6 characters!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.Password_must_have_six_characters), Toast.LENGTH_SHORT).show();
                 } else {
                     register(str_username, str_fullname, str_email, str_password);
                 }
@@ -107,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                             });
                         } else {
                             pd.dismiss();
-                            Toast.makeText(RegisterActivity.this, "You can't register with this email or password", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegisterActivity.this, getString(R.string.You_cant_register_with_this_email_or_password), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
