@@ -232,8 +232,7 @@ public class MessageActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Token token = snapshot.getValue(Token.class);
-                    Data data = new Data(fuser.getUid(), R.mipmap.ic_launcher, username+": "+message, "New Message",
-                            userid);
+                    Data data = new Data(fuser.getUid(), R.mipmap.ic_launcher, username+": "+message, getString(R.string.New_Message), userid);
 
                     Sender sender = new Sender(data, Objects.requireNonNull(token).getToken());
 
@@ -243,7 +242,7 @@ public class MessageActivity extends AppCompatActivity {
                                 public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
                                     if (response.code() == 200){
                                         if (Objects.requireNonNull(response.body()).success != 1){
-                                            Toast.makeText(MessageActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
+
                                         }
                                     }
                                 }

@@ -154,6 +154,7 @@
     <string name="Save">Save</string>
     <string name="Change_Photo">Change Photo</string>
     <string name="Log_Out">Log Out</string>
+    <string name="New_Message">New Message</string>
 
 
 </resources>

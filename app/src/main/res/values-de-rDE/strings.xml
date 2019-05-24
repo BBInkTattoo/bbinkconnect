@@ -95,5 +95,6 @@
     <string name="Save">Speichern</string>
     <string name="Change_Photo">Profilbild ändern</string>
     <string name="Log_Out">Abmelden</string>
+    <string name="New_Message">Neue Nachricht</string>
 
 </resources>
