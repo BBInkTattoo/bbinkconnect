@@ -19,6 +19,8 @@ import com.bbinkconnect.bbinktattoo.StoryActivity;
 import com.bbinkconnect.bbinktattoo.model.Story;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -113,13 +115,26 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
 
     private void userInfo(final ViewHolder viewHolder, String userid, final int pos){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+        reference.keepSynced(true);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(Objects.requireNonNull(user).getImageurl()).into(viewHolder.story_photo);
+
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+                Glide.with(mContext)
+                        .load(Objects.requireNonNull(user).getImageurl())
+                        .apply(requestOptions)
+                        .into(viewHolder.story_photo);
+
                 if (pos != 0) {
-                    Glide.with(mContext).load(user.getImageurl()).into(viewHolder.story_photo_seen);
+                    Glide.with(mContext)
+                            .load(user.getImageurl())
+                            .apply(requestOptions)
+                            .into(viewHolder.story_photo_seen);
+
                     viewHolder.story_username.setText(user.getUsername());
                 }
             }
@@ -134,6 +149,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
     private void myStory(final TextView textView, final ImageView imageView, final boolean click){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Story")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid());
+        reference.keepSynced(true);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -192,6 +208,7 @@ public class StoryAdapter extends RecyclerView.Adapter<StoryAdapter.ViewHolder>{
     private void seenStory(final ViewHolder viewHolder, String userid){
         DatabaseReference reference  = FirebaseDatabase.getInstance().getReference("Story")
                 .child(userid);
+        reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

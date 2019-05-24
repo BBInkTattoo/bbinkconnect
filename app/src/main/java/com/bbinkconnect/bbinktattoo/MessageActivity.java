@@ -15,15 +15,15 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bbinkconnect.bbinktattoo.adapter.MessageAdapter;
-import com.bbinkconnect.bbinktattoo.fragments.APIService;
-import com.bbinkconnect.bbinktattoo.model.Chat;
-import com.bbinkconnect.bbinktattoo.model.User;
 import com.bbinkconnect.bbinktattoo.notifications.Client;
 import com.bbinkconnect.bbinktattoo.notifications.Data;
 import com.bbinkconnect.bbinktattoo.notifications.MyResponse;
 import com.bbinkconnect.bbinktattoo.notifications.Sender;
 import com.bbinkconnect.bbinktattoo.notifications.Token;
+import com.bbinkconnect.bbinktattoo.adapter.MessageAdapter;
+import com.bbinkconnect.bbinktattoo.fragments.APIService;
+import com.bbinkconnect.bbinktattoo.model.Chat;
+import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -52,12 +52,15 @@ public class MessageActivity extends AppCompatActivity {
     private FirebaseUser fuser;
     private DatabaseReference reference;
 
+    private ImageButton btn_send;
     private EditText text_send;
 
     private MessageAdapter messageAdapter;
     private List<Chat> mchat;
 
     private RecyclerView recyclerView;
+
+    private Intent intent;
 
     private ValueEventListener seenListener;
 
@@ -79,6 +82,7 @@ public class MessageActivity extends AppCompatActivity {
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // and this
                 startActivity(new Intent(MessageActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
             }
         });
@@ -93,10 +97,10 @@ public class MessageActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
-        ImageButton btn_send = findViewById(R.id.btn_send);
+        btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
-        Intent intent = getIntent();
+        intent = getIntent();
         userid = intent.getStringExtra("userid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -107,8 +111,8 @@ public class MessageActivity extends AppCompatActivity {
                 String msg = text_send.getText().toString();
                 if (!msg.equals("")){
                     sendMessage(fuser.getUid(), userid, msg);
-            } else {
-                Toast.makeText(MessageActivity.this, getString(R.string.You_cant_send_empty_message), Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MessageActivity.this, "You can't send empty message", Toast.LENGTH_SHORT).show();
                 }
                 text_send.setText("");
             }
@@ -236,8 +240,8 @@ public class MessageActivity extends AppCompatActivity {
                     apiService.sendNotification(sender)
                             .enqueue(new Callback<MyResponse>() {
                                 @Override
-                                public void onResponse(@NonNull Call<MyResponse> call, @NonNull Response<MyResponse> response) {
-                                        if (response.code() == 200){
+                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                    if (response.code() == 200){
                                         if (Objects.requireNonNull(response.body()).success != 1){
                                             Toast.makeText(MessageActivity.this, "Failed!", Toast.LENGTH_SHORT).show();
                                         }
@@ -245,7 +249,7 @@ public class MessageActivity extends AppCompatActivity {
                                 }
 
                                 @Override
-                                public void onFailure(@NonNull Call<MyResponse> call, @NonNull Throwable t) {
+                                public void onFailure(Call<MyResponse> call, Throwable t) {
 
                                 }
                             });

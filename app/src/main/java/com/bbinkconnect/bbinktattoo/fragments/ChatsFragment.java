@@ -1,6 +1,5 @@
 package com.bbinkconnect.bbinktattoo.fragments;
 
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,17 +11,13 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bbinkconnect.bbinktattoo.MainActivity;
-import com.bbinkconnect.bbinktattoo.PostActivity;
-import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.SearchActivity;
 import com.bbinkconnect.bbinktattoo.adapter.UserAdapterChat;
+import com.bbinkconnect.bbinktattoo.notifications.Token;
+import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.model.Chatlist;
 import com.bbinkconnect.bbinktattoo.model.User;
-import com.bbinkconnect.bbinktattoo.notifications.Token;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.iid.FirebaseInstanceId;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -30,9 +25,12 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+
 
 public class ChatsFragment extends Fragment {
 
@@ -47,7 +45,7 @@ public class ChatsFragment extends Fragment {
     private List<Chatlist> usersList;
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);

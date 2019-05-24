@@ -9,7 +9,7 @@ import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.util.Objects;
 
-public class MyFirebaseIdService extends FirebaseMessagingService {
+class MyFirebaseIdService extends FirebaseMessagingService {
 
 
     @Override

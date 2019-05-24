@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.model.Chat;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import java.util.List;
@@ -55,7 +57,15 @@ public class MessageAdapter extends RecyclerView.Adapter<MessageAdapter.ViewHold
         if (imageurl.equals("default")){
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         } else {
-            Glide.with(mContext).load(imageurl).into(holder.profile_image);
+
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+
+            Glide.with(mContext)
+                    .load(imageurl)
+                    .apply(requestOptions)
+                    .into(holder.profile_image);
         }
 
         if (position == mChat.size()-1){

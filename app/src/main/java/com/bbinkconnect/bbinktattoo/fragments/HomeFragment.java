@@ -32,14 +32,10 @@ public class HomeFragment extends Fragment {
 
     private PostAdapter postAdapter;
     private List<Post> postList;
-
     private StoryAdapter storyAdapter;
     private List<Story> storyList;
-
     private List<String> followingList;
-
     private ProgressBar progress_circular;
-
 
 
     @Override
@@ -49,8 +45,10 @@ public class HomeFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+
         mLayoutManager.setReverseLayout(true);
         mLayoutManager.setStackFromEnd(true);
+
         recyclerView.setLayoutManager(mLayoutManager);
         postList = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postList);
@@ -156,5 +154,4 @@ public class HomeFragment extends Fragment {
             }
         });
     }
-
 }

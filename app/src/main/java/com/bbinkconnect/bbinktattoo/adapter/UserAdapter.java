@@ -20,6 +20,8 @@ import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.fragments.ProfileFragment;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -69,7 +71,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ImageViewHolde
 
         holder.username.setText(user.getUsername());
         holder.fullname.setText(user.getFullname());
-        Glide.with(mContext).load(user.getImageurl()).into(holder.image_profile);
+
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+
+        Glide.with(mContext)
+                .load(user.getImageurl())
+                .apply(requestOptions)
+                .into(holder.image_profile);
 
         if (user.getId().equals(firebaseUser.getUid())){
             holder.btn_follow.setVisibility(View.GONE);
@@ -154,6 +164,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ImageViewHolde
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Follow").child(Objects.requireNonNull(firebaseUser).getUid()).child("following");
+        reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

@@ -16,6 +16,8 @@ import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.fragments.PostDetailFragment;
 import com.bbinkconnect.bbinktattoo.model.Post;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 
 import java.util.List;
 
@@ -43,7 +45,13 @@ public class MyFotosAdapter extends RecyclerView.Adapter<MyFotosAdapter.ImageVie
 
         final Post post = mPosts.get(position);
 
-        Glide.with(mContext).load(post.getPostimage()).into(holder.post_image);
+        RequestOptions requestOptions = new RequestOptions();
+        requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+        Glide.with(mContext)
+                .load(post.getPostimage())
+                .apply(requestOptions)
+                .into(holder.post_image);
 
         holder.post_image.setOnClickListener(new View.OnClickListener() {
             @Override

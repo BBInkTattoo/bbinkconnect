@@ -35,18 +35,12 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
 
     private int counter = 0;
     private long pressTime = 0L;
-
     private StoriesProgressView storiesProgressView;
     private ImageView image;
     private ImageView story_photo;
     private TextView story_username;
-
     private TextView seen_number;
-    //
-
     private List<String> images;
-
-
     private List<String> storyids;
     private String userid;
 
@@ -236,7 +230,11 @@ public class StoryActivity extends AppCompatActivity implements StoriesProgressV
 
     private void addView(String storyid){
         FirebaseDatabase.getInstance().getReference().child("Story").child(userid)
-                .child(storyid).child("views").child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).setValue(true);
+                .child(storyid)
+                .child("views")
+                .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser())
+                        .getUid())
+                .setValue(true);
     }
 
     private void seenNumber(String storyid){

@@ -141,7 +141,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ImageVie
     private void getUserInfo(final ImageView imageView, final TextView username, String publisherid){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(publisherid);
-
+        reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

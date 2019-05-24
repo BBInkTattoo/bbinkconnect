@@ -15,6 +15,8 @@ import com.bbinkconnect.bbinktattoo.R;
 import com.bbinkconnect.bbinktattoo.model.Chat;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -56,7 +58,14 @@ public class UserAdapterChat extends RecyclerView.Adapter<UserAdapterChat.ViewHo
         if (user.getImageurl().equals("default")) {
             holder.profile_image.setImageResource(R.mipmap.ic_launcher);
         } else {
-            Glide.with(mContext).load(user.getImageurl()).into(holder.profile_image);
+            RequestOptions requestOptions = new RequestOptions();
+            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+
+            Glide.with(mContext)
+                    .load(user.getImageurl())
+                    .apply(requestOptions)
+                    .into(holder.profile_image);
         }
 
         if (ischat) {
@@ -118,7 +127,7 @@ public class UserAdapterChat extends RecyclerView.Adapter<UserAdapterChat.ViewHo
         theLastMessage = "default";
         final FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Chats");
-
+        reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -154,6 +163,7 @@ public class UserAdapterChat extends RecyclerView.Adapter<UserAdapterChat.ViewHo
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Follow").child(Objects.requireNonNull(firebaseUser).getUid()).child("following");
+        reference.keepSynced(true);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

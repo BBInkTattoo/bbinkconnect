@@ -20,6 +20,8 @@ import com.bbinkconnect.bbinktattoo.model.Notification;
 import com.bbinkconnect.bbinktattoo.model.Post;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -52,7 +54,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull final ImageViewHolder holder, final int position) {
 
         final Notification notification = mNotification.get(position);
-
         holder.text.setText(notification.getText());
 
         getUserInfo(holder.image_profile, holder.username, notification.getUserid());
@@ -84,9 +85,6 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
                 }
             }
         });
-
-
-
     }
 
     @Override
@@ -114,12 +112,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private void getUserInfo(final ImageView imageView, final TextView username, String publisherid){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Users").child(publisherid);
-
+        reference.keepSynced(true);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);
-                Glide.with(mContext).load(Objects.requireNonNull(user).getImageurl()).into(imageView);
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+                Glide.with(mContext)
+                        .load(Objects.requireNonNull(user).getImageurl())
+                        .apply(requestOptions)
+                        .into(imageView);
+
                 username.setText(user.getUsername());
             }
 
@@ -133,12 +137,18 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     private void getPostImage(final ImageView post_image, String postid){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
                 .child("Posts").child(postid);
-
+        reference.keepSynced(true);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Post post = dataSnapshot.getValue(Post.class);
-                Glide.with(mContext).load(Objects.requireNonNull(post).getPostimage()).into(post_image);
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+                Glide.with(mContext)
+                        .load(Objects.requireNonNull(post).getPostimage())
+                        .apply(requestOptions)
+                        .into(post_image);
             }
 
             @Override

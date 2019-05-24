@@ -25,6 +25,8 @@ import com.bbinkconnect.bbinktattoo.adapter.MyFotosAdapter;
 import com.bbinkconnect.bbinktattoo.model.Post;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -210,8 +212,15 @@ public class ProfileFragment extends Fragment {
                 }
                 User user = dataSnapshot.getValue(User.class);
 
-                Glide.with(getContext()).load(Objects.requireNonNull(user).getImageurl()).into(image_profile);
-                //username.setText(user.getUsername());
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+
+
+                Glide.with(getContext())
+                        .load(Objects.requireNonNull(user).getImageurl())
+                        .apply(requestOptions)
+                        .into(image_profile);
+
                 fullname.setText(user.getFullname());
                 bio.setText(user.getBio());
 

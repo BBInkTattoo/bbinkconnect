@@ -23,26 +23,29 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Objects;
 
+
 public class MainActivity extends AppCompatActivity {
     private Fragment selectedfragment = null;
+    boolean shouldExecuteOnResume;
+    private DatabaseReference referencechat;
     private FirebaseUser firebaseUser;
-    private DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        shouldExecuteOnResume = false;
 
         ImageButton ClickImageButton = findViewById(R.id.btnLaunchCamera);
         ImageButton ClickImageButton2 = findViewById(R.id.imageButton2);
         BottomNavigationView bottom_navigation = findViewById(R.id.bottom_navigation);
         SearchView searchView = findViewById(R.id.searchView_home);
-
-        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-
         bottom_navigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         bottom_navigation.getMenu().findItem(R.id.home).setChecked(true);
+
+
+        firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        referencechat = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
         Bundle intent = getIntent().getExtras();
         if (intent != null) {
@@ -82,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
@@ -111,24 +113,31 @@ public class MainActivity extends AppCompatActivity {
                 }
             };
 
-    private void status(String status){
-        reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 
+    private void status(String status){
+        referencechat = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("status", status);
-
-        reference.updateChildren(hashMap);
+        referencechat.updateChildren(hashMap);
     }
 
-    @Override
-    protected void onResume() {
+        @Override
+    public void onResume() {
         super.onResume();
-        status("online");
+            if(shouldExecuteOnResume){
+                status("online");
+            } else{
+                shouldExecuteOnResume = true;
+            }
     }
 
     @Override
-    protected void onPause() {
+    public void onPause() {
         super.onPause();
         status("offline");
     }
 }
+
+
+
+
