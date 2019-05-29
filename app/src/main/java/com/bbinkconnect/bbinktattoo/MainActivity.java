@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SearchView;
-
+import com.google.android.gms.ads.MobileAds;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -35,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         shouldExecuteOnResume = false;
+
+        MobileAds.initialize(this, "ca-app-pub-9307288200117598~4014758980");
+
 
         ImageButton ClickImageButton = findViewById(R.id.btnLaunchCamera);
         ImageButton ClickImageButton2 = findViewById(R.id.imageButton2);

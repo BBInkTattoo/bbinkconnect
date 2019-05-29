@@ -78,6 +78,19 @@
         android:layout_below="@+id/appbarlayout"
         android:id="@+id/fragment_container"/>
 
+    <com.google.android.gms.ads.doubleclick.PublisherAdView
+        xmlns:ads="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/publisherAdView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bar"
+        android:layout_marginBottom="0dp"
+        ads:adSize="BANNER"
+        android:layout_centerHorizontal="true"
+        ads:adUnitId="ca-app-pub-9307288200117598/4463026133">
+
+    </com.google.android.gms.ads.doubleclick.PublisherAdView>
+
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"

@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -30,10 +29,8 @@ import com.bbinkconnect.bbinktattoo.fragments.ProfileFragment;
 import com.bbinkconnect.bbinktattoo.model.Post;
 import com.bbinkconnect.bbinktattoo.model.User;
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestManager;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.request.RequestOptions;
-import com.bumptech.glide.request.target.SimpleTarget;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -43,8 +40,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -57,249 +52,217 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
     private final List<Post> mPosts;
     public ValueEventListener listener;
     private FirebaseUser firebaseUser;
+    private static final int post = 0;
+    private static final int werbung = 1;
+
 
     public PostAdapter(Context context, List<Post> posts){
         mContext = context;
         mPosts = posts;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (position == 0 || (position + 1) % 7 == 0) {
+          return werbung;
+        } else {
+            return post;
+        }
+    }
+
     @NonNull
     @Override
     public ImageViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(mContext).inflate(R.layout.post_item, parent, false);
-        return new ImageViewHolder(view);
+        switch (viewType) {
+        case werbung:
+            // write ads code
+
+        case post:
+            View view = LayoutInflater.from(mContext).inflate(R.layout.post_item, parent, false);
+            return new ImageViewHolder(view);
+        default:
+
+        }
+        return null;
     }
 
     @Override
     public void onBindViewHolder(@NonNull final ImageViewHolder holder, final int position) { // Werbung
-        if (position == 1 || (position + 2) % 7 == 1) {
-            final Post post = mPosts.get(position);
+        int viewType  = getItemViewType(position);
+        switch (viewType) {
+            case werbung:
+                // write ads code
 
-            RequestOptions requestOptions = new RequestOptions();
-            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
+            case post:
+                firebaseUser = FirebaseAuth.getInstance().getCurrentUser(); // Post Image
+                final Post post = mPosts.get(position);
+                RequestOptions requestOptions = new RequestOptions();
+                requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
 
-            Glide.with(mContext)
-                    .load("https://www.lenaheel.de/wp-content/uploads/2014/12/CSLH_Spruch1-1.jpg")
-                    .apply(requestOptions)
-                    .into(holder.post_image);
+                Glide.with(mContext)
+                        .load(post.getPostimage())
+                        .apply(requestOptions)
+                        .into(holder.post_image);
 
-            holder.like.setVisibility(View.GONE);
-            holder.save.setVisibility(View.GONE);
-            holder.likes.setVisibility(View.GONE);
-            holder.comment.setVisibility(View.GONE);
-            holder.comments.setVisibility(View.GONE);
-            holder.description.setText("Hier könnte ihre Werbung stehen."); // Übersetzten
-            holder.username.setText("BB Ink Connect");
-            holder.publisher.setText("BB Ink Connect");
+                if (post.getDescription().equals("")) {
+                    holder.description.setVisibility(View.GONE);
+                } else {
+                    holder.description.setVisibility(View.VISIBLE);
+                    holder.description.setText(post.getDescription());
+                }
 
-            Glide.with(mContext)
-                    .load("data:image/jpeg;base64,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")
-                    .apply(requestOptions)
-                    .into(holder.image_profile);
+                publisherInfo(holder.image_profile, holder.username, holder.publisher, post.getPublisher());
+                isLiked(post.getPostid(), holder.like);
+                isSaved(post.getPostid(), holder.save);
+                nrLikes(holder.likes, post.getPostid());
+                getCommetns(post.getPostid(), holder.comments);
 
+                holder.like.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (holder.like.getTag().equals("like")) {
 
-            holder.more.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PopupMenu popupMenu = new PopupMenu(mContext, view);
-                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem menuItem) {
-                            switch (menuItem.getItemId()){
-                                case R.id.ad_info:
-                                    Toast.makeText(mContext, "Info clicked!", Toast.LENGTH_SHORT).show(); // Übersetzten
-                                    return true;
-                                case R.id.report_ad:
-                                    Toast.makeText(mContext, "Reported clicked!", Toast.LENGTH_SHORT).show();  // Übersetzten
-                                default:
-                                    return false;
-                            }
+                            FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).setValue(true);
+
+                            addNotification(post.getPublisher(), post.getPostid());
+                        } else {
+
+                            FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).removeValue();
                         }
-                    });
-
-                    popupMenu.inflate(R.menu.post_menu);
-                    if (!post.getPublisher().equals(firebaseUser.getUid())){
-                        popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.report).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.ad_info).setVisible(true);
-                        popupMenu.getMenu().findItem(R.id.report_ad).setVisible(true);
                     }
-                    popupMenu.show();
-                }
-            });
+                });
 
-        } else {
-
-            firebaseUser = FirebaseAuth.getInstance().getCurrentUser(); // Post Image
-            final Post post = mPosts.get(position);
-
-            RequestOptions requestOptions = new RequestOptions();
-            requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-
-            Glide.with(mContext)
-                    .load(post.getPostimage())
-                    .apply(requestOptions)
-                    .into(holder.post_image);
-
-            if (post.getDescription().equals("")){
-                holder.description.setVisibility(View.GONE);
-            } else {
-                holder.description.setVisibility(View.VISIBLE);
-                holder.description.setText(post.getDescription());
-            }
-
-            publisherInfo(holder.image_profile, holder.username, holder.publisher, post.getPublisher());
-            isLiked(post.getPostid(), holder.like);
-            isSaved(post.getPostid(), holder.save);
-            nrLikes(holder.likes, post.getPostid());
-            getCommetns(post.getPostid(), holder.comments);
-
-            holder.like.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (holder.like.getTag().equals("like")) {
-
-                        FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).setValue(true);
-
-                        addNotification(post.getPublisher(), post.getPostid());
-                    } else {
-
-                        FirebaseDatabase.getInstance().getReference().child("Likes").child(post.getPostid()).child(firebaseUser.getUid()).removeValue();
+                holder.save.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (holder.save.getTag().equals("save")) {
+                            FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid()).child(post.getPostid()).setValue(true);
+                        } else {
+                            FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid()).child(post.getPostid()).removeValue();
+                        }
                     }
-                }
-            });
+                });
 
-            holder.save.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (holder.save.getTag().equals("save")){
-                        FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid()).child(post.getPostid()).setValue(true);
-                    } else {
-                        FirebaseDatabase.getInstance().getReference().child("Saves").child(firebaseUser.getUid()).child(post.getPostid()).removeValue();
+                holder.image_profile.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                        editor.putString("profileid", post.getPublisher());
+                        editor.apply();
+                        ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
                     }
-                }
-            });
+                });
 
-            holder.image_profile.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    editor.putString("profileid", post.getPublisher());
-                    editor.apply();
-                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                }
-            });
+                holder.username.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                        editor.putString("profileid", post.getPublisher());
+                        editor.apply();
+                        ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                    }
+                });
 
-            holder.username.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    editor.putString("profileid", post.getPublisher());
-                    editor.apply();
-                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                }
-            });
+                holder.publisher.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                        editor.putString("profileid", post.getPublisher());
+                        editor.apply();
 
-            holder.publisher.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    editor.putString("profileid", post.getPublisher());
-                    editor.apply();
+                        ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
+                    }
+                });
 
-                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ProfileFragment()).commit();
-                }
-            });
+                holder.comment.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, CommentsActivity.class);
+                        intent.putExtra("postid", post.getPostid());
+                        intent.putExtra("publisherid", post.getPublisher());
+                        mContext.startActivity(intent);
+                    }
+                });
 
-            holder.comment.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, CommentsActivity.class);
-                    intent.putExtra("postid", post.getPostid());
-                    intent.putExtra("publisherid", post.getPublisher());
-                    mContext.startActivity(intent);
-                }
-            });
+                holder.comments.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, CommentsActivity.class);
+                        intent.putExtra("postid", post.getPostid());
+                        intent.putExtra("publisherid", post.getPublisher());
+                        mContext.startActivity(intent);
+                    }
+                });
 
-            holder.comments.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, CommentsActivity.class);
-                    intent.putExtra("postid", post.getPostid());
-                    intent.putExtra("publisherid", post.getPublisher());
-                    mContext.startActivity(intent);
-                }
-            });
+                holder.post_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+                        editor.putString("postid", post.getPostid());
+                        editor.apply();
 
-            holder.post_image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", MODE_PRIVATE).edit();
-                    editor.putString("postid", post.getPostid());
-                    editor.apply();
+                        ((FragmentActivity) mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PostDetailFragment()).commit();
+                    }
+                });
 
-                    ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new PostDetailFragment()).commit();
-                }
-            });
+                holder.likes.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(mContext, FollowersActivity.class);
+                        intent.putExtra("id", post.getPostid());
+                        intent.putExtra("title", "likes");
+                        mContext.startActivity(intent);
+                    }
+                });
 
-            holder.likes.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    Intent intent = new Intent(mContext, FollowersActivity.class);
-                    intent.putExtra("id", post.getPostid());
-                    intent.putExtra("title", "likes");
-                    mContext.startActivity(intent);
-                }
-            });
+                holder.more.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        PopupMenu popupMenu = new PopupMenu(mContext, view);
+                        popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                            @Override
+                            public boolean onMenuItemClick(MenuItem menuItem) {
+                                switch (menuItem.getItemId()) {
+                                    case R.id.edit:
+                                        editPost(post.getPostid());
+                                        return true;
+                                    case R.id.delete:
+                                        final String id = post.getPostid();
 
-            holder.more.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    PopupMenu popupMenu = new PopupMenu(mContext, view);
-                    popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
-                        @Override
-                        public boolean onMenuItemClick(MenuItem menuItem) {
-                            switch (menuItem.getItemId()){
-                                case R.id.edit:
-                                    editPost(post.getPostid());
-                                    return true;
-                                case R.id.delete:
-                                    final String id = post.getPostid();
+                                        FirebaseDatabase.getInstance().getReference("Posts").child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
 
-                                    FirebaseDatabase.getInstance().getReference("Posts").child(post.getPostid()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            if (task.isSuccessful()){
-                                                deleteNotifications(id, firebaseUser.getUid());
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    deleteNotifications(id, firebaseUser.getUid());
+                                                }
                                             }
-                                        }
-                                    });
-                                    return true;
-                                case R.id.report:
-                                    Toast.makeText(mContext, "Reported clicked!", Toast.LENGTH_SHORT).show(); // Übersetzen
-                                default:
-                                    return false;
+                                        });
+                                        return true;
+                                    case R.id.report:
+                                        Toast.makeText(mContext, "Reported clicked!", Toast.LENGTH_SHORT).show(); // Übersetzen
+                                    default:
+                                        return false;
+                                }
                             }
+                        });
+                        popupMenu.inflate(R.menu.post_menu);
+                        if (!post.getPublisher().equals(firebaseUser.getUid())) {
+                            popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
+                            popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
+                            popupMenu.getMenu().findItem(R.id.ad_info).setVisible(false);
+                            popupMenu.getMenu().findItem(R.id.report_ad).setVisible(false);
+                        } else {
+                            popupMenu.getMenu().findItem(R.id.report_ad).setVisible(false);
+                            popupMenu.getMenu().findItem(R.id.ad_info).setVisible(false);
+                            popupMenu.getMenu().findItem(R.id.edit).setVisible(true);
+                            popupMenu.getMenu().findItem(R.id.delete).setVisible(true);
+                            popupMenu.getMenu().findItem(R.id.report).setVisible(false);
                         }
-                    });
-                    popupMenu.inflate(R.menu.post_menu);
-                    if (!post.getPublisher().equals(firebaseUser.getUid())) {
-                        popupMenu.getMenu().findItem(R.id.edit).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.delete).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.ad_info).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.report_ad).setVisible(false);
-                    }else{
-                        popupMenu.getMenu().findItem(R.id.report_ad).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.ad_info).setVisible(false);
-                        popupMenu.getMenu().findItem(R.id.edit).setVisible(true);
-                        popupMenu.getMenu().findItem(R.id.delete).setVisible(true);
-                        popupMenu.getMenu().findItem(R.id.report).setVisible(false);
+                        popupMenu.show();
                     }
-                    popupMenu.show();
-                }
-            });
+                });
+            default:
         }
     }
 
@@ -423,7 +386,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
                 RequestOptions requestOptions = new RequestOptions();
                 requestOptions.diskCacheStrategy(DiskCacheStrategy.ALL);
-
+                //stürzt hier ab
                 Glide.with(mContext)
                         .load(Objects.requireNonNull(user).getImageurl())
                         .apply(requestOptions)

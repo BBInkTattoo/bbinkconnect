@@ -110,7 +110,6 @@ public class HomeFragment extends Fragment {
                         }
                     }
                 }
-
                 postAdapter.notifyDataSetChanged();
                 progress_circular.setVisibility(View.GONE);
             }
