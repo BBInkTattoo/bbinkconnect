@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="switch_tabs">
-        <item>Chat</item>
-        <item>Notification</item>
-    </string-array>
 
 </resources>

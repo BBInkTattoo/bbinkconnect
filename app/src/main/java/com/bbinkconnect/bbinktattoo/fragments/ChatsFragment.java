@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class ChatsFragment extends Fragment {
+class ChatsFragment extends Fragment {
 
     private RecyclerView recyclerView;
 
@@ -45,7 +45,7 @@ public class ChatsFragment extends Fragment {
     private List<Chatlist> usersList;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_chat, container, false);
 
         recyclerView = view.findViewById(R.id.recycler_view);
@@ -78,7 +78,7 @@ public class ChatsFragment extends Fragment {
         updateToken(FirebaseInstanceId.getInstance().getToken());
 
 
-        FloatingActionButton messagebtnchat = (FloatingActionButton) view.findViewById(R.id.floatingActionButton2);
+        FloatingActionButton messagebtnchat = view.findViewById(R.id.floatingActionButton2);
         messagebtnchat.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), SearchActivity.class);

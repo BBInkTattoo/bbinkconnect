@@ -19,14 +19,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/recycler_view_story"
-                android:layout_margin="5dp"
-                android:layout_below="@id/bar"/>
+                android:layout_margin="5dp" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/recycler_view"
-                android:layout_below="@id/recycler_view_story"/>
+                android:id="@+id/recycler_view" />
 
         </LinearLayout>
 

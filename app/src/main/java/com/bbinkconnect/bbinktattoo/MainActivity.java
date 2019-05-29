@@ -26,7 +26,7 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
     private Fragment selectedfragment = null;
-    boolean shouldExecuteOnResume;
+    private boolean shouldExecuteOnResume;
     private DatabaseReference referencechat;
     private FirebaseUser firebaseUser;
 

@@ -28,7 +28,7 @@ import java.util.List;
 import java.util.Objects;
 
 
-public class NotificationFragment extends Fragment {
+class NotificationFragment extends Fragment {
 
     private NotificationAdapter notificationAdapter;
     private List<Notification> notificationList;

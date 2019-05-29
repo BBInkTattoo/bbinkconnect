@@ -6,141 +6,43 @@
     <string name="home">Home</string>
     <string name="profile">Profile</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="profile_fragment">Profile</string>
-    <string name="home_fragment">Home</string>
-
-    <string name="app_info_fragment">Info</string>
-    <string name="upload_tattoo_fragment">Upload Tattoo</string>
-    <string name="edit_profile_fragment">Edit profile</string>
-    <string name="faq_fragment" translatable="false">FAQ</string>
-    <string name="sign_out_info_fragment">Log out</string>
     <string name="options">Options</string>
     <string name="trends_on_bb_ink_connect">Trends on BB ink Connect</string>
-    <string name="liked_by_176">Liked by 176</string>
-    <string name="dennis_joch_neuer_post">Dennis Joch Neuer Post</string>
-    <string name="view_all_3_comments">View all 3 comments</string>
-    <string name="_3_days_ago">3 DAYS AGO</string>
-    <string name="edit_your_profile">Edit your profile</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="no_account_yet_create_one">No account yet? Create one</string>
-    <string name="login_with_facebook">Login with Facebook</string>
-    <string name="login_with_google">Login with Google</string>
     <string name="please_wait">Please wait…</string>
-    <string name="agb">AGB</string>
-    <string name="and">and</string>
-    <string name="dsgvo">DSGVO</string>
-    <string name="chat">Chat</string>
     <string name="notification">Notification</string>
-    <string name="read">Read</string>
-    <string name="reply">Reply</string>
-    <string name="_5_minutes_ago">5 minutes ago</string>
-    <string name="share_link">Share link</string>
-    <string name="copy_link">Copy link</string>
-    <string name="report">Report</string>
-    <string name="share">Share</string>
-    <string name="write_a_description">Write a description...</string>
-    <string name="register_a_new_account">REGISTER A NEW ACCOUNT</string>
     <string name="full_name">Full Name</string>
     <string name="register">Register</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="cancel">CANCEL</string>
-    <string name="confirm">CONFIRM</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="profile_photo">Profile photo</string>
     <string name="username">username</string>
-    <string name="display_name">Display name</string>
-    <string name="website">Website</string>
     <string name="description">Description</string>
-    <string name="private_information">Private information</string>
-    <string name="change">Change</string>
-    <string name="phone_number">Phone Number</string>
-    <string name="phone">Phone Number</string>
-    <string name="next">Next</string>
-    <string name="gallery">Gallery</string>
-    <string name="sign_out">Sign Out</string>
-    <string name="are_you_sure_you_want_to_sign_out">Are you sure you want to sign out?</string>
-    <string name="comments">Comments</string>
-    <string name="add_a_comment">Add a comment...</string>
-    <string name="photo">Photo</string>
-    <string name="processing">Processing...</string>
 
     <!-- facebook -->
     <string name="facebook_app_id" translatable="false">381719705755520</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb381719705755520</string>
 
     <!-- toast -->
-    <string name="text_null">You must fill out all the fields</string>
-    <string name="login_failed">Login failed</string>
-    <string name="registration_failed">Registration failed</string>
-    <string name="signup_successful">Signup successful. Sending verification email.</string>
-    <string name="couldnt_send_verification_email">Couldn\'t send verification email.</string>
-    <string name="you_cant_post_a_blank_comment">You can\'t post a blank comment</string>
-    <string name="upload_new_photo">Upload new photo</string>
 
     <!-- firebase -->
-    <string name="field_username" translatable="false">username</string>
-    <string name="dbname_users" translatable="false">users</string>
-    <string name="dbname_user_account_settings" translatable="false">user_account_settings</string>
-    <string name="field_user_id" translatable="false">user_id</string>
-    <string name="dbname_photos" translatable="false">photos</string>
-    <string name="field_likes" translatable="false">likes</string>
-    <string name="dbname_user_photos" translatable="false">user_photos</string>
-    <string name="field_comments" translatable="false">comments</string>
-    <string name="field_photo_id" translatable="false">photo_id</string>
-    <string name="field_tags" translatable="false">tags</string>
-    <string name="field_caption" translatable="false">caption</string>
-    <string name="field_date_created" translatable="false">date_created</string>
-    <string name="field_image_path" translatable="false">image_path</string>
-    <string name="dbname_following" translatable="false">following</string>
-    <string name="field_comment" translatable="false">comment</string>
-    <string name="field_display_name" translatable="false">display_name</string>
-    <string name="field_website" translatable="false">website</string>
-    <string name="field_description" translatable="false">description</string>
-    <string name="field_phone_number" translatable="false">phone_number</string>
-    <string name="field_email" translatable="false">email</string>
-    <string name="dbname_followers" translatable="false">followers</string>
     <string name="posting">Posting</string>#
 
     <string name="something_gone_wrong">Something gone wrong!</string>
     <!-- post card -->
-    <string name="view_all_comments_part_i">View all </string>
-    <string name="view_all_comments_part_ii"> comments</string>
     <!-- post card en-->
-    <string name="days_ago" translatable="false"> days ago</string>
-    <string name="today" translatable="false">Today</string>
     <!-- post card de-->
-    <string name="vor" translatable="false">Vor </string>
-    <string name="tage" translatable="false"> Tagen</string>
-    <string name="heute" translatable="false">Heute</string>
 
     <!-- activity -->
-    <string name="home_activity" translatable="false">Home Activity</string>
 
     <!-- Intent Extras -->
-    <string name="calling_activity" translatable="false">calling_activity</string>
-    <string name="intent_user" translatable="false">intent_user</string>
-    <string name="selected_image" translatable="false">selected_image</string>
-    <string name="selected_bitmap" translatable="false">selected_bitmap</string>
-    <string name="return_to_fragment" translatable="false">return_to_fragment</string>
 
     <!-- fragment -->
-    <string name="view_comments_fragment" translatable="false">View Comments</string>
-    <string name="view_profile_fragment" translatable="false">ViewProfile</string>
-    <string name="view_post_fragment" translatable="false">View Post</string>
 
     <!-- photo types -->
-    <string name="new_photo" translatable="false">new_photo</string>
 
-    <string name="activity_number" translatable="false">activity_number</string>
-    <string name="no_notification">No notification</string>
-    <string name="no_chats">No chats</string>
-    <string name="write_a_message">Write a message</string>
-    <string name="pia_esspunkt">Pia Esspunkt</string>
     <string name="post">post</string>
     <string name="All_fields_are_required">All fields are required!</string>
     <string name="Password_must_have_six_characters">Password must have 6 characters!</string>
@@ -148,7 +50,6 @@
     <string name="Posting_post">Your contribution will be posted.</string>
     <string name="Failed">Failed</string>
     <string name="No_image_selected">No image selected...</string>
-    <string name="You_cant_send_empty_message">You can\'t send empty message!</string>
     <string name="Search">Search</string>
     <string name="Add_a_comment">Add a comment...</string>
     <string name="Save">Save</string>

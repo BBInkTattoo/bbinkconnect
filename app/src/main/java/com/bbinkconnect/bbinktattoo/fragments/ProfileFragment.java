@@ -50,7 +50,6 @@ public class ProfileFragment extends Fragment {
     private TextView following;
     private TextView fullname;
     private TextView bio;
-    private TextView username;
     private Button edit_profile;
 
     private List<String> mySaves;
@@ -83,7 +82,7 @@ public class ProfileFragment extends Fragment {
         fullname = view.findViewById(R.id.fullname);
         bio = view.findViewById(R.id.bio);
         edit_profile = view.findViewById(R.id.edit_profile);
-        username = view.findViewById(R.id.username);
+        TextView username = view.findViewById(R.id.username);
         ImageButton my_fotos = view.findViewById(R.id.my_fotos);
         ImageButton saved_fotos = view.findViewById(R.id.saved_fotos);
 

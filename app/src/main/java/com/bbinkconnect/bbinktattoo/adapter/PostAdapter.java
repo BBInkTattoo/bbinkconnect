@@ -50,7 +50,6 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
     private final Context mContext;
     private final List<Post> mPosts;
-    public ValueEventListener listener;
     private FirebaseUser firebaseUser;
     private static final int post = 0;
     private static final int werbung = 1;
@@ -379,7 +378,8 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ImageViewHolde
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users").child(userid);
         reference.keepSynced(true);
-        listener = reference.addValueEventListener(new ValueEventListener() {
+        //stürzt hier ab
+        ValueEventListener listener = reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 User user = dataSnapshot.getValue(User.class);

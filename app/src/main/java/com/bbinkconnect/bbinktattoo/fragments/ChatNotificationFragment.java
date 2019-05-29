@@ -31,7 +31,7 @@ public class ChatNotificationFragment extends Fragment {
 
     private FirebaseUser firebaseUser;
     private DatabaseReference reference;
-    public ValueEventListener listener;
+    private ValueEventListener listener;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

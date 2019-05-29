@@ -52,15 +52,12 @@ public class MessageActivity extends AppCompatActivity {
     private FirebaseUser fuser;
     private DatabaseReference reference;
 
-    private ImageButton btn_send;
     private EditText text_send;
 
     private MessageAdapter messageAdapter;
     private List<Chat> mchat;
 
     private RecyclerView recyclerView;
-
-    private Intent intent;
 
     private ValueEventListener seenListener;
 
@@ -97,10 +94,10 @@ public class MessageActivity extends AppCompatActivity {
 
         profile_image = findViewById(R.id.profile_image);
         username = findViewById(R.id.username);
-        btn_send = findViewById(R.id.btn_send);
+        ImageButton btn_send = findViewById(R.id.btn_send);
         text_send = findViewById(R.id.text_send);
 
-        intent = getIntent();
+        Intent intent = getIntent();
         userid = intent.getStringExtra("userid");
         fuser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -239,16 +236,14 @@ public class MessageActivity extends AppCompatActivity {
                     apiService.sendNotification(sender)
                             .enqueue(new Callback<MyResponse>() {
                                 @Override
-                                public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
+                                public void onResponse(@NonNull Call<MyResponse> call, @NonNull Response<MyResponse> response) {
                                     if (response.code() == 200){
-                                        if (Objects.requireNonNull(response.body()).success != 1){
-
-                                        }
+                                        Objects.requireNonNull(response.body());
                                     }
                                 }
 
                                 @Override
-                                public void onFailure(Call<MyResponse> call, Throwable t) {
+                                public void onFailure(@NonNull Call<MyResponse> call, @NonNull Throwable t) {
 
                                 }
                             });
